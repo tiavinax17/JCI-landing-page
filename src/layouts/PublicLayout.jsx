@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import Header from './Header'
-import { Navigate, Outlet } from 'react-router-dom'
-import Footer from './Footer'
-import { UserContext } from '../context/UserContext';
+// import React, { useContext } from 'react'
+// import Header from './Header'
+import { Navigate, Outlet } from 'react-router'
+// import Footer from './Footer'
+// import { UserContext } from '../context/UserContext';
 
 
 const PublicLayout = () => {

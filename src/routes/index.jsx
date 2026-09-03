@@ -1,4 +1,4 @@
-import { Route,Routes } from "react-router-dom";
+import { Route,Routes } from "react-router";
 import PublicLayout from "../layouts/PublicLayout";
 import AcceuilPage from "../pages/public/AcceuilPage";
 

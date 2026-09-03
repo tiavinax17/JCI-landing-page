@@ -1,8 +1,7 @@
-import React from 'react'
 
 const AcceuilPage = () => {
   return (
-    <div>AcceuilPage</div>
+    <div className='bg-jci-yellow h-screen font-poppins text-jci-white text-[26px] font-bold'>AcceuilPage</div>
   )
 }
 
