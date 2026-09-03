@@ -1,16 +1,71 @@
-# React + Vite
+# JCI Madagascar — Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page officielle développée pour **JCI Madagascar** par **ISeven Studio**.
 
-Currently, two official plugins are available:
+## Présentation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Ce projet a été conçu et développé exclusivement pour **JCI Madagascar**, dans le but de fournir une landing page moderne, professionnelle et adaptée à son identité visuelle.
 
-## React Compiler
+Le projet a été développé par :
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**ISeven Studio**
+**Développeur : Tiavina Randrianja**
+Téléphone : **+261 34 54 516 28**
+Email : **[tiavina3180@gmail.com](mailto:tiavina3180@gmail.com)**
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Propriété du projet
+
+**Ce projet est exclusivement destiné à JCI Madagascar.**
+
+L'ensemble du code source, de la structure, des composants, du design, des éléments graphiques et des développements réalisés dans le cadre de ce projet sont des éléments **propriétaires et confidentiels**, sauf indication contraire concernant des composants ou bibliothèques tierces.
+
+### Interdiction de copie et de réutilisation
+
+Toute personne ou organisation n'est pas autorisée à :
+
+* Copier tout ou partie du projet
+* Reproduire le design ou l'interface
+* Réutiliser le code source à d'autres fins
+* Distribuer ou publier le projet
+* Revendre ou commercialiser tout ou partie du projet
+* Modifier puis redistribuer le projet
+* Utiliser les composants ou éléments graphiques du projet dans un autre site ou produit
+* Publier le code source sur un dépôt public ou une plateforme de partage
+
+Toute utilisation, reproduction ou redistribution non autorisée est interdite.
+
+Pour toute demande concernant l'utilisation ou la réutilisation d'une partie du projet, veuillez contacter le développeur.
+
+---
+
+## Développement
+
+**Client :** JCI Madagascar
+**Studio :** ISeven Studio
+**Développeur :** Tiavina Randrianja
+
+---
+
+## Contact
+
+Pour toute question concernant le projet :
+
+
+**ISeven Studio**
+**Tiavina Randrianja**
+
+Téléphone : +261 34 54 516 28
+Email : [tiavina3180@gmail.com](mailto:tiavina3180@gmail.com)
+
+---
+
+## Copyright
+
+© 2026 **ISeven Studio*.
+Projet développé exclusivement pour **JCI Madagascar**.
+
+**Tous droits réservés.**
+
+Toute reproduction, copie, modification, distribution ou réutilisation non autorisée du projet est interdite.
