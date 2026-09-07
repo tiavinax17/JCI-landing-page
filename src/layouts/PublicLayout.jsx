@@ -1,7 +1,9 @@
 // import React, { useContext } from 'react'
 // import Header from './Header'
 import { Navigate, Outlet } from 'react-router'
-// import Footer from './Footer'
+import Header from '../components/layout/Header'
+import Navbar from '../components/layout/Navbar'
+import Footer from '../components/layout/Footer'
 // import { UserContext } from '../context/UserContext';
 
 
@@ -16,9 +18,10 @@ const PublicLayout = () => {
 //   }
   return (
     <>
-    {/* <Header/> */}
+    <Header/>
+    <Navbar/>
     <Outlet/>
-    {/* <Footer/> */}
+    <Footer/>
     </>
   )
 }
