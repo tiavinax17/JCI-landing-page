@@ -1,8 +1,8 @@
 import React from 'react'
 
-const H1 = ({children}) => {
+const H1 = ({children, TextColor, TextSize}) => {
   return (
-    <h1 className='text-[26px] font-roboto font-bold text-jci-black'>
+    <h1 className={`${TextSize || 'text-[20px]'} font-roboto font-bold ${TextColor || 'text-jci-black'}`}>
         {children}
     </h1>
   )
