@@ -10,11 +10,14 @@ import { LogIn } from "lucide-react"
 import Mada from "../../images/mada.png"
 import BG from "../../images/HomeBG.png"
 import LogoJCIMNoBg from "../../images/JCI/JCI Madagascar/JCI Madagascar background marine blue name blue logo.png"
-import LogoBLTNoBgRow from "../../images/Charte Build Legacy Together/BLT Couleur/BLT-02.png"
+import LogoBLTNoBgRow from "../../images/Charte Build Legacy Together/BLT Blanc/BLT-05.png"
+import LogoBLTNoBgRowWhite from "../../images/Charte Build Legacy Together/BLT Monochrome Blanc/BLT-11.png"
 import PSD2026 from "../../images/Photos corporate BN/DN2026.jpg"
 import MidiMadagascar from "../../images/LOGO-OTHER/logo_midi_madagasikara.png"
 import OrangeMadagascar from "../../images/LOGO-OTHER/SIGNATURE_ORANGE_EST_LA_Plan de travail pour fond noir.png"
 import GroupeKentia from "../../images/LOGO-OTHER/Logo Kentia.png"
+import { IoArrowDownCircle } from "react-icons/io5";
+
 import KoonSpace from "../../images/LOGO-OTHER/Logo Koonspace.png" 
 
 const cadresAction = [
@@ -31,12 +34,6 @@ const programmes = [
   { Title: "CYE (Creative Young Entrepreneur)", Content: "Le programme met en lumière les jeunes entrepreneurs innovants." },
 ]
 
-const partenaires = [
-  { Image: MidiMadagascar },
-  { Image: OrangeMadagascar },
-  { Image: GroupeKentia },
-  { Image: KoonSpace },
-]
 
 const evenements = [
   { Day: "01", Month: "OCT", Type: "EVENT", Title: "Convention Nationale 2026", Content: "1-2-3 octobre 2026 · La Convention Nationale est la rencontre de tous les jaycees de la Grande Île pour faire le bilan de l'année et préparer la prochaine." },
@@ -55,7 +52,7 @@ const AcceuilPage = () => {
         <div className='ml-0 lg:ml-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8 lg:gap-1 mr-0 lg:mr-5 items-start max-w-8xl mx-auto'>
 
           {/* Colonne 1 : présentation + cadres d'action */}
-          <div className='flex flex-col gap-8 justify-between'>
+          <div className='flex flex-col h-full justify-between'>
             <div className='flex flex-col gap-8'>
 
               <div className='group flex flex-col opacity-100 lg:opacity-40 lg:hover:opacity-100 transition-opacity duration-300'>
@@ -136,50 +133,71 @@ const AcceuilPage = () => {
           </div>
 
           {/* Colonne 3 : valeurs + programmes */}
-          <div className='flex flex-col gap-10'>
-            <div className='group flex flex-col gap-7 opacity-100 lg:opacity-40 lg:hover:opacity-100 transition-opacity duration-300'>
-              <div>
-                <H1 TextColor="text-jci-white">NOS VALEURS</H1>
-                <LabelTrait>NOTRE MISSION</LabelTrait>
-                <p className='text-[10px] text-jci-white font-poppins leading-relaxed'>
-                  Offrir aux jeunes des opportunités de développement de leadership en leur donnant 
-                  la capacité de créer des changements positifs.
-                </p>
-              </div>
-              <div>
-                <LabelTrait>NOTRE VISION</LabelTrait>
-                <p className='text-[10px] text-jci-white font-poppins leading-relaxed'>
-                  Être le principal réseau mondial de jeunes leaders.
-                </p>
-              </div>
-              <div className='flex flex-col gap-3'>
-                <div className='flex flex-col gap-1'>
-                  <LabelTrait>NOTRE CREDO</LabelTrait>
-                  <ul className='ml-3 list-disc list-inside text-[10px] text-jci-white font-poppins leading-relaxed'>
-                    <li>Que la foi en <span className="text-jci-blue">Dieu</span> donne à la vie son véritable sens</li>
-                    <li>Que la <span className="text-jci-blue">fraternité</span> humaine transcende la souveraineté des nations</li>
-                    <li>Que le gouvernement doit s'appuyer sur la <span className="text-jci-blue">loi</span> et non sur l'arbitraire</li>
-                    <li>Que la <span className="text-jci-blue">liberté</span> des individus et des entreprises assure au mieux la justice économique</li>
-                    <li>Que la <span className="text-jci-blue">personne humaine</span> est la plus précieuse des richesses</li>
-                    <li>Et que <span className="text-jci-blue">servir</span> l'humanité constitue l'œuvre la plus noble d'une vie</li>
-                  </ul>
+          <div className="flex flex-col justify-between h-full">
+            <div className='flex flex-col gap-10'>
+              <div className='group flex flex-col gap-7 opacity-100 lg:opacity-40 lg:hover:opacity-100 transition-opacity duration-300'>
+                <div>
+                  <H1 TextColor="text-jci-white">NOS VALEURS</H1>
+                  <LabelTrait>NOTRE MISSION</LabelTrait>
+                  <p className='text-[10px] text-jci-white font-poppins leading-relaxed'>
+                    Offrir aux jeunes des opportunités de développement de leadership en leur donnant 
+                    la capacité de créer des changements positifs.
+                  </p>
                 </div>
-                <ButtonVoid TextColor="text-jci-white" path="/jci-madagascar/valeurs">Lire la suite <LogIn size={20}/></ButtonVoid>
+                <div>
+                  <LabelTrait>NOTRE VISION</LabelTrait>
+                  <p className='text-[10px] text-jci-white font-poppins leading-relaxed'>
+                    Être le principal réseau mondial de jeunes leaders.
+                  </p>
+                </div>
+                <div className='flex flex-col gap-3'>
+                  <div className='flex flex-col gap-1'>
+                    <LabelTrait>NOTRE CREDO</LabelTrait>
+                    <ul className='ml-3 list-disc list-inside text-[10px] text-jci-white font-poppins leading-relaxed'>
+                      <li>Que la foi en <span className="text-jci-blue">Dieu</span> donne à la vie son véritable sens</li>
+                      <li>Que la <span className="text-jci-blue">fraternité</span> humaine transcende la souveraineté des nations</li>
+                      <li>Que le gouvernement doit s'appuyer sur la <span className="text-jci-blue">loi</span> et non sur l'arbitraire</li>
+                      <li>Que la <span className="text-jci-blue">liberté</span> des individus et des entreprises assure au mieux la justice économique</li>
+                      <li>Que la <span className="text-jci-blue">personne humaine</span> est la plus précieuse des richesses</li>
+                      <li>Et que <span className="text-jci-blue">servir</span> l'humanité constitue l'œuvre la plus noble d'une vie</li>
+                    </ul>
+                  </div>
+                  <ButtonVoid TextColor="text-jci-white" path="/jci-madagascar/valeurs">Lire la suite <LogIn size={20}/></ButtonVoid>
+                </div>
+              </div>
+              <div className='group flex flex-col gap-5 opacity-100 lg:opacity-40 lg:hover:opacity-100 transition-opacity duration-300'>
+                <div className='flex flex-col gap-1'>
+                  <H1 TextColor="text-jci-white">NOS PROGRAMMES</H1>
+                  <p className=' ml-1 text-[10px] font-poppins text-jci-white'>À travers des divers programmes :</p>
+                  <div className='flex flex-col gap-1'>
+                    <ul className='ml-3 list-disc list-inside text-[10px] text-jci-white font-poppins leading-relaxed'>
+                    {programmes.map((item) => (
+                      <li key={item.Title}> {item.Title}</li>
+                    ))}
+                    </ul>
+                  </div>
+                </div>
+                  <ButtonVoid TextColor="text-jci-white" path="/jci-madagascar/programmes">Lire la suite <LogIn size={20}/></ButtonVoid>
               </div>
             </div>
-            <div className='group flex flex-col gap-5 opacity-100 lg:opacity-40 lg:hover:opacity-100 transition-opacity duration-300'>
-              <div className='flex flex-col gap-1'>
-                <H1 TextColor="text-jci-white">NOS PROGRAMMES</H1>
-                <p className=' ml-1 text-[10px] font-poppins text-jci-white'>À travers des divers programmes :</p>
-                <div className='flex flex-col gap-1'>
-                  <ul className='ml-3 list-disc list-inside text-[10px] text-jci-white font-poppins leading-relaxed'>
-                  {programmes.map((item) => (
-                    <li key={item.Title}> {item.Title}</li>
-                  ))}
-                  </ul>
-                </div>
+            {/* group : hover fait apparaître le logo BLT couleur en plus grand à la place du logo blanc */}
+            <div className="w-full h-full mt-10 relative">
+              <div  className="group relative  flex justify-start ">
+                <img
+                  src={LogoBLTNoBgRowWhite}
+                  alt="Logo Build Legacy Together"
+                  className="absolute left-0 top-0 h-11 w-auto translate-y-0 opacity-50 transition-all duration-500 ease-out group-hover:opacity-0"
+                />
+                <img
+                  src={LogoBLTNoBgRow}
+                  alt="Logo Build Legacy Together"
+                  className="absolute left-0 top-0 h-11 w-auto translate-y-0 opacity-0 transition-all duration-500 ease-out group-hover:h-13 group-hover:w-auto group-hover:opacity-100"
+                />
               </div>
-                <ButtonVoid TextColor="text-jci-white" path="/jci-madagascar/programmes">Lire la suite <LogIn size={20}/></ButtonVoid>
+              <div className="absolute bottom-0 right-2">
+                    <IoArrowDownCircle className="text-jci-white" size={20} />
+              </div>
+
             </div>
           </div>
 
