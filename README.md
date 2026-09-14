@@ -54,8 +54,6 @@ Pour toute question concernant le projet :
 
 
 **ISeven Studio**
-**Tiavina Randrianja**
-
 Téléphone : +261 34 54 516 28
 Email : [tiavina3180@gmail.com](mailto:tiavina3180@gmail.com)
 
