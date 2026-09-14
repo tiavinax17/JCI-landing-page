@@ -1,4 +1,3 @@
-import JCILogo from "../../images/JCI/JCI MAdagascar/JCI_Madagascar_background_marine_blue_name_blue_logo-removebg-preview.png" 
 import { NavLink } from 'react-router'
 import ButtonVoid from "../ui/ButtonVoid"
 import SocialIconsRow from "../ui/SocialIconsRow"
@@ -6,8 +5,7 @@ import { LogIn, Menu, X } from "lucide-react"
 import { useState } from "react"
 import ButtonFull from './../ui/ButtonFull';
 import { ShoppingCart } from 'lucide-react';
-import France from "../../images/flags/Flag_of_France.svg";
-import Us from "../../images/flags/Flag_of_the_United_States.svg";
+import JCILogo from "../../images/JCI/JCI Madagascar/JCI_Madagascar_background_marine_blue_name_blue_logo-removebg-preview.png" 
 import BuildLegacyLogo from "../../images/Charte Build Legacy Together/BLT Blanc/BLT-07.png"
 
 const navActiveClass = ({ isActive }) => isActive ? "text-jci-yellow scale-105 " : "text-jci-white hover:scale-105 transition-transform duration-300 hover:text-jci-yellow";
