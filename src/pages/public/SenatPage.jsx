@@ -4,7 +4,7 @@ import H2 from "../../components/ui/H2"
 import LabelTrait from "../../components/ui/LabelTrait"
 import LabelTraitSimple from "../../components/ui/LabelTraitSimple"
 import ValueCredoBlock from "../../components/ui/ValueCredoBlock"
-import SenatImage from "../../images/JCI/JCI Madagascar/senat.png"
+import SenatImage from "../../images/Senat.png"
 
 const SenatPage = () => {
   return (
@@ -12,8 +12,8 @@ const SenatPage = () => {
       <SubNav />
 
       <div className="flex flex-col gap-0 lg:ml-20 lg:mr-1">
-        <div className="flex lg:flex-row flex-col  bg-jci-white gap-10 rounded-xl lg:px-10 px-5 lg:p-5 p-2 ">
-          <div className='flex flex-1 md:flex-2 flex-col gap-1 items-start text-start max-w-full '>
+        <div className="group flex lg:flex-row flex-col  bg-jci-white gap-10 rounded-xl lg:px-10 px-5 lg:p-5 p-2 ">
+          <div className='flex flex-1 md:flex-2 flex-col gap-1 items-start text-start max-w-full  '>
             <LabelTraitSimple Label="Présentation" H1Text="Le sénat - Madagascar" />
             <p className='lg:text-[12px] md:text-[12px] text-[10px] font-normal font-poppins text-jci-black text-justify'>
               Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam Alexandrini nobilis 
@@ -22,7 +22,7 @@ const SenatPage = () => {
               nullo contactus idem Clematius nec hiscere nec loqui permissus occideretur.
             </p>
             
-            <div className='flex md:flex-row flex-col md:gap-10 gap-5'>
+            <div className='flex lg:flex-row flex-col md:gap-10 gap-5'>
               <div className="flex flex-col flex-1 gap-5 md:gap-10">
                  <div className="flex flex-col mt-5"> 
               <H2>Le titre de Sénateur JCI</H2>
@@ -57,10 +57,7 @@ const SenatPage = () => {
             </div>
           </div>
           <div className='flex flex-1 md:flex-col flex-col gap-10'>
-            <div className=" ">
-              <img src={SenatImage} alt="C. William Brownfield" className="h-auto w-full object-cover rounded-xl" />
-            </div>
-           
+            <img src={SenatImage} alt="C. William Brownfield(Jesus's blood)" className="lg:h-auto h-[200px] w-full object-contain rounded-xl group-hover:scale-102  transition-all duration-300" />
           </div>
         </div>
 

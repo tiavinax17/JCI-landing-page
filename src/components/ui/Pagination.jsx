@@ -40,7 +40,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
       <button
         onClick={() => goToPage(1)}
         disabled={currentPage === 1}
-        className="lg:w-8 lg:h-8 border h-6 w-6 border-gray-200 flex items-center justify-center disabled:opacity-30"
+        className="lg:w-8 lg:h-8 border h-6 w-6 border-gray-200 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
       >
         <ChevronsLeft size={16} />
       </button>
@@ -49,7 +49,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage === 1}
-        className="lg:w-8 lg:h-8 border h-6 w-6 border-gray-200 flex items-center justify-center disabled:opacity-30"
+        className="lg:w-8 lg:h-8 border h-6 w-6 border-gray-200 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
       >
         <ChevronLeft size={16} />
       </button>
@@ -61,7 +61,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
           return (
             <span
               key={`dots-${index}`}
-              className="lg:w-8 lg:h-8 h-6 w-6 border flex items-center justify-center"
+              className="lg:w-8 lg:h-8 h-6 w-6 border border-gray-500 flex items-center justify-center"
             >
               ...
             </span>
@@ -76,11 +76,12 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
               lg:w-8 lg:h-8 h-6 w-6
               border border-gray-200
               flex items-center justify-center
+              cursor-pointer
               text-sm
               ${
                 currentPage === page
                   ? "bg-jci-yellow text-white border-jci-yellow"
-                  : "bg-white text-jci-black"
+                  : "bg-white text-jci-black hover:bg-jci-yellow hover:text-jci-white  hover:border-jci-yellow"
               }
             `}
           >
@@ -93,7 +94,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
       <button
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="lg:w-8 lg:h-8 h-6 w-6 border border-gray-200 flex items-center justify-center disabled:opacity-30"
+        className="lg:w-8 lg:h-8 h-6 w-6 border border-gray-200 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer hover:bg-jci-yellow hover:text-jci-white  hover:border-jci-yellow"
       >
         <ChevronRight size={16} />
       </button>
@@ -102,7 +103,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
       <button
         onClick={() => goToPage(totalPages)}
         disabled={currentPage === totalPages}
-        className="lg:w-8 lg:h-8 border h-6 w-6 border-gray-200 flex items-center justify-center disabled:opacity-30"
+        className="lg:w-8 lg:h-8 border h-6 w-6 border-gray-200 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer hover:bg-jci-yellow hover:text-jci-white  hover:border-jci-yellow"
       >
         <ChevronsRight size={16} />
       </button>

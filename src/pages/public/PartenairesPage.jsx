@@ -1,10 +1,19 @@
 import H1 from "../../components/ui/H1"
 import LabelTrait from "../../components/ui/LabelTrait"
 import PartnerBlock from "../../components/ui/PartnerBlock"
+
 import MidiMadagascarLogo from "../../images/LOGO-OTHER/logo_midi_madagasikara.png"
+import MidiMadagascarFond from "../../images/Partenariat/MidiMadagascar.png"
+
 import GroupeKentiaLogo from "../../images/LOGO-OTHER/Logo Koonspace.png"
-import OrangeLogo from "../../images/LOGO-OTHER/SIGNATURE_ORANGE_EST_LA_Plan de travail pour fond noir.png"
-import ISevenLogo from "../../images/LOGO-OTHER/logo_midi_madagasikara.png"
+import GroupeKentiaFond from "../../images/Partenariat/Kentia.png"
+
+import OrangeLogo from "../../images/LOGO-OTHER/OrangeLogo.png"
+import OrangeFond from "../../images/Partenariat/Orange.png" 
+
+import ISevenLogo from "../../images/LOGO-OTHER/I0SevenStudio.png"
+import ISevenFond from "../../images/Partenariat/ISeven.png"
+
 import TestImg from "../../images/testImg.jpg"
 
 // Données de démonstration en attendant le contenu officiel des partenaires
@@ -20,7 +29,7 @@ const partners = [
       Alexandrini nobilis mors repentina; tum comitem orientis formula missa letali omnino scelere nullo contactus idem 
       Clematius nec hiscere nec loqui permissus occideretur.` ,
     Logo: MidiMadagascarLogo, 
-    ImageFond: TestImg ,
+    ImageFond: MidiMadagascarFond ,
     BGColor:"bg-[#DF0023]", 
     LabelColor:"text-jci-white",
     H1Color:"text-jci-yellow",
@@ -36,7 +45,7 @@ const partners = [
       Alexandrini nobilis mors repentina; tum comitem orientis formula missa letali omnino scelere nullo contactus idem 
       Clematius nec hiscere nec loqui permissus occideretur.` ,
     Logo: GroupeKentiaLogo, 
-    ImageFond: TestImg ,
+    ImageFond: GroupeKentiaFond ,
     BGColor:"bg-[#FFFFFF]", 
     LabelColor:"text-jci-teal",
     H1Color:"text-jci-teal",
@@ -52,7 +61,7 @@ const partners = [
       Alexandrini nobilis mors repentina; tum comitem orientis formula missa letali omnino scelere nullo contactus idem 
       Clematius nec hiscere nec loqui permissus occideretur.` ,
     Logo: OrangeLogo, 
-    ImageFond: TestImg ,
+    ImageFond: OrangeFond ,
     BGColor:"bg-[#FF6500]", 
     LabelColor:"text-jci-white",
     H1Color:"text-[#215E61]",
@@ -68,7 +77,7 @@ const partners = [
       Alexandrini nobilis mors repentina; tum comitem orientis formula missa letali omnino scelere nullo contactus idem 
       Clematius nec hiscere nec loqui permissus occideretur.` ,
     Logo: ISevenLogo, 
-    ImageFond: TestImg ,
+    ImageFond: ISevenFond ,
     BGColor:"bg-[#FFFFFF]", 
     LabelColor:"text-[#045F66]",
     H1Color:"text-[#C1CA1D]",

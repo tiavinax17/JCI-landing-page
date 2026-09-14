@@ -19,7 +19,7 @@ const AppRoutes = () => {
         {/*when no user is connected */}
         <Route element={<PublicLayout/>}>
             <Route path="/" element={<AcceuilPage/>}/>
-            <Route path="/jci-madagascar/historique" element={<HistoriquePage/>}/>
+            <Route path="/jci-madagascar" element={<HistoriquePage/>}/>
             <Route path="/jci-madagascar/valeurs" element={<ValeursPage/>}/>
             <Route path="/jci-madagascar/bureau-national" element={<BureauNationalPage/>}/>
             <Route path="/jci-madagascar/programmes" element={<ProgrammesPage/>}/>

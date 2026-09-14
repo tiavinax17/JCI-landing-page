@@ -1,24 +1,23 @@
-import ButtonFull from "../../components/ui/ButtonFull"
 import ButtonVoid from "../../components/ui/ButtonVoid"
 import EventCard from "../../components/ui/EventCard"
 import H1 from "../../components/ui/H1"
 import LabelTrait from "../../components/ui/LabelTrait"
 import StatBlock from "../../components/ui/StatBlock"
-import PartnerBlock from "../../components/ui/PartnerBlock"
 import ImgTest from "../../images/testImg.jpg"
 import { LogIn } from "lucide-react"
-import Mada from "../../images/mada.png"
+import Mada from "../../images/AccueilMada.svg"
 import BG from "../../images/HomeBG.png"
 import LogoJCIMNoBg from "../../images/JCI/JCI Madagascar/JCI Madagascar background marine blue name blue logo.png"
 import LogoBLTNoBgRow from "../../images/Charte Build Legacy Together/BLT Blanc/BLT-05.png"
 import LogoBLTNoBgRowWhite from "../../images/Charte Build Legacy Together/BLT Monochrome Blanc/BLT-11.png"
-import PSD2026 from "../../images/Photos corporate BN/DN2026.jpg"
+import PSD2026 from "../../images/Photos corporate BN/DN2026.png"
 import MidiMadagascar from "../../images/LOGO-OTHER/logo_midi_madagasikara.png"
-import OrangeMadagascar from "../../images/LOGO-OTHER/SIGNATURE_ORANGE_EST_LA_Plan de travail pour fond noir.png"
+import OrangeMadagascar from "../../images/LOGO-OTHER/OrangeLogo.png"
 import GroupeKentia from "../../images/LOGO-OTHER/Logo Kentia.png"
+import KoonSpace from "../../images/LOGO-OTHER/Logo Koonspace.png" 
+import ISeven from "../../images/LOGO-OTHER/I0SevenStudio.png"
 import { IoArrowDownCircle } from "react-icons/io5";
 
-import KoonSpace from "../../images/LOGO-OTHER/Logo Koonspace.png" 
 
 const cadresAction = [
   { Title: "Développement individuel", Active: true },
@@ -52,26 +51,26 @@ const AcceuilPage = () => {
         <div className='ml-0 lg:ml-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8 lg:gap-1 mr-0 lg:mr-5 items-start max-w-8xl mx-auto'>
 
           {/* Colonne 1 : présentation + cadres d'action */}
-          <div className='flex flex-col h-full justify-between'>
+          <div className='flex flex-col h-full gap-12'>
             <div className='flex flex-col gap-8'>
 
               <div className='group flex flex-col opacity-100 lg:opacity-40 lg:hover:opacity-100 transition-opacity duration-300'>
                 <LabelTrait>QUI SOMMES-NOUS ?</LabelTrait>
                 <H1 TextColor="text-jci-white">LA JCI MADAGASCAR</H1>
                 <div className='flex flex-col gap-2'>
-                  <p className='text-[10px] text-jci-white font-poppins leading-relaxed'>
+                  <p className='text-[10px] text-jci-white font-poppins leading-relaxed text-justify'>
                     est une organisation à but non lucratif dédiée aux jeunes leaders entreprenants âgés de 18 à 40 ans.
                     Nous œuvrons pour le développement professionnel, la création d'opportunités économiques et
                     l'élaboration de solutions innovantes face aux défis sociétaux.
                   </p>
-                  <ButtonVoid TextColor="text-jci-white" path="/jci-madagascar/historique">Lire la suite <LogIn size={20}/></ButtonVoid>
+                  <ButtonVoid TextColor="text-jci-white" path="/jci-madagascar">Lire la suite <LogIn size={20}/></ButtonVoid>
                 </div>
               </div>
 
               <div className='group flex flex-col gap-1 opacity-100 lg:opacity-40 lg:hover:opacity-100 transition-opacity duration-300'>
                 <LabelTrait>QU'EST-CE QUE NOUS FAISONS ?</LabelTrait>
                 <H1 TextColor="text-jci-white">NOS CADRES D'ACTIONS</H1>
-                <p className='text-[10px] text-jci-white font-poppins leading-relaxed'>
+                <p className='text-[10px] text-jci-white font-poppins leading-relaxed text-justify'>
                   À la Jeune Chambre Internationale, nous nous lançons le défi d'identifier les leviers stratégiques
                   mondiaux permettant à nos membres de maximiser l'efficacité de leurs actions pour résoudre les
                   problématiques qu'encourt notre société tout en renforçant leurs compétences et leur leadership
@@ -84,7 +83,7 @@ const AcceuilPage = () => {
                   ))}
                   </ul>
                 </div>
-                <ButtonVoid TextColor="text-jci-white" path="/jci-madagascar/projets">Nos projets <LogIn size={20}/></ButtonVoid>
+                <ButtonVoid TextColor="text-jci-white" path="/jci-madagascar/programmes">Nos projets <LogIn size={20}/></ButtonVoid>
               </div>
 
               <div className='relative flex flex-col lg:flex-row items-start lg:items-center gap-4'>
@@ -98,15 +97,15 @@ const AcceuilPage = () => {
                 <div className='relative lg:absolute w-full lg:w-[500px] lg:left-25 top-0 z-50 mt-3 lg:mt-0 lg:ml-3 max-w-full max-h-fit overflow-visible lg:overflow-hidden lg:max-w-0 lg:max-h-0 rounded border border-jci-blue/40 bg-jci-black/40 backdrop-blur-xl p-5 lg:p-0 opacity-100 lg:opacity-0 shadow-lg transition-all duration-300 ease-out lg:peer-hover:max-w-[10000px] lg:peer-hover:max-h-fit lg:peer-hover:p-5 lg:peer-hover:opacity-100'>
                  <div className="flex flex-row justify-between">
                   <div className="flex flex-col">
-                    <img src={LogoJCIMNoBg} alt="Logo JCI Madagascar" className="h-4 w-fit bg-no-repeat" />
+                    <img src={LogoJCIMNoBg} alt="Logo JCI Madagascar" className="h-5 w-fit bg-no-repeat" />
                     <div>
-                    <H1 TextColor="text-jci-white" TextSize="text-[10px]">Minah RAKOTOBE</H1>
-                    <p className="text-jci-white font-light text-[8px]">Présidente Nationale 2026</p>
+                    <H1 TextColor="text-jci-white" TextSize="text-[11px]">Minah RAKOTOBE</H1>
+                    <p className="text-jci-white font-light text-[9px]">Présidente Nationale 2026</p>
                     </div>
                   </div>
-                  <div><img src={LogoBLTNoBgRow} alt="Logo Build Legacy Together" className="h-4 w-auto" /></div>
+                  <div><img src={LogoBLTNoBgRow} alt="Logo Build Legacy Together" className="h-5 w-auto" /></div>
                  </div>
-                  <p className='text-[8px] text-jci-white font-poppins italic text-justify'>
+                  <p className='text-[10px] text-jci-white font-poppins italic text-justify'>
                   <span className='text-jci-yellow text-2xl align-middle leading-none'>"</span>L’année 2026 marque pour la JCI Madagascar un nouveau cycle, guidé par une conviction forte : Build Legacy Together.<br/>
                   Construire un héritage, c’est refuser l’action ponctuelle et les résultats éphémères. C’est faire le choix de la cohérence, de la rigueur et de la transmission fondé sur le leadership responsable, la rigueur et l’impact collectif.<br/>
                   Cette année, notre ambition est claire : renforcer la JCI Madagascar comme acteur de référence du développement du leadership des jeunes, ceci à travers des organisations locales solides, des projets à impact mesurable et des leaders responsables, capables de servir avec sens et intégrité.<br/>
@@ -128,13 +127,13 @@ const AcceuilPage = () => {
           </div>
 
           {/* Colonne 2 : repère visuel des zones (placeholder de la carte de Madagascar) */}
-          <div className='flex justify-center md:row-span-2 md:self-center lg:row-span-1 lg:self-start'>
+          <div className='flex justify-center md:row-span-2 md:self-center -mt-25 lg:row-span-1 lg:self-start p-10 hover:scale-101  transition-all duration-300'>
             <img src={Mada} alt="Carte des zones JCI Madagascar" />
           </div>
 
           {/* Colonne 3 : valeurs + programmes */}
           <div className="flex flex-col justify-between h-full">
-            <div className='flex flex-col gap-10'>
+            <div className='flex flex-col gap-5'>
               <div className='group flex flex-col gap-7 opacity-100 lg:opacity-40 lg:hover:opacity-100 transition-opacity duration-300'>
                 <div>
                   <H1 TextColor="text-jci-white">NOS VALEURS</H1>
@@ -181,7 +180,7 @@ const AcceuilPage = () => {
               </div>
             </div>
             {/* group : hover fait apparaître le logo BLT couleur en plus grand à la place du logo blanc */}
-            <div className="w-full h-full mt-10 relative">
+            <div className="w-full h-full mt-5 relative">
               <div  className="group relative  flex justify-start ">
                 <img
                   src={LogoBLTNoBgRowWhite}
@@ -221,19 +220,19 @@ const AcceuilPage = () => {
           <p className='text-jci-white/80 font-semibold text-[13px] italic'>Explorez nos partenaires nationaux</p>
         </div>
         <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-10 w-full max-w-5xl'>
-          <div className='flex items-center justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3'>
+          <div className='flex items-center justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3  hover:scale-105 transition-all duration-300'>
             <img src={MidiMadagascar} alt="" className="h-15 w-auto" />
           </div>
-          <div className='flex items-start justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-5'>
-            <img src={OrangeMadagascar} alt="" className="h-20 w-auto" />
+          <div className='flex items-start justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white pt-5  hover:scale-105 transition-all duration-300'>
+            <img src={OrangeMadagascar} alt="" className="h-17 w-auto" />
           </div>
-          <div className='flex items-center justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3'>
+          <div className='flex items-center justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3  hover:scale-105 transition-all duration-300'>
             <img src={GroupeKentia} alt=""  className="h-20 w-auto" />
           </div>
-          <div className='flex items-center justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3'>
-            <img src={KoonSpace} alt="" className="h-15 w-auto" />
+          <div className='flex items-center justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3  hover:scale-105 transition-all duration-300'>
+            <img src={ISeven} alt="" className="h-15 w-auto" />
           </div>
-          <div className='flex items-center justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3'>
+          <div className='flex items-center justify-center rounded-xl w-full max-w-[200px] mx-auto h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3  hover:scale-105 transition-all duration-300'>
             <img src={KoonSpace} alt="" className="h-16 w-auto" />
           </div>
         </div>
@@ -250,7 +249,9 @@ const AcceuilPage = () => {
             <H1 TextSize="text-2xl">RESTEZ CONNECTÉ</H1>
             <p className='text-[12px] -mt-0 font-poppins font-medium  text-jci-black/80'>Découvrez toutes les actualités autour de la JCI et les évènements à venir.</p>
           </div>
-          <ButtonVoid BgColors="hover:bg-jci-blue border-jci-blue" TextColor="text-jci-black" path="/jci-madagascar/blog">Voir plus <LogIn size={20}/></ButtonVoid>
+          <div className='flex justify-end lg:w-[68%] w-full'>
+            <ButtonVoid  nVoid BgColors=" hover:bg-jci-blue border-jci-blue" TextColor="text-jci-black" path="/blog">Voir plus <LogIn size={20}/></ButtonVoid>
+          </div>
         </div>
         <div className='relative lg:absolute lg:top-27 lg:left-70 flex flex-col lg:flex-row w-full lg:w-auto px-6 lg:px-0'>
           <div name="text" className='hidden lg:block relative h-[400px] w-[60px] -ml-10 mr-5'>

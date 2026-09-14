@@ -216,8 +216,32 @@
   font-display: swap;
 }
 
+/* ========================================
+   Roboto
+   Variable Font
+   ======================================== */
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-VariableFont_wdth,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./assets/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
-    --color-jci-black: #130F2D;
+    --color-jci-black: #110E27;
+    --color-jci-dark: #130F2D;
     --color-jci-blue: #0097D7;
     --color-jci-white: #FFFFFF;
     --color-jci-navy: #1F4789;
@@ -227,4 +251,5 @@
     --font-noto: "Noto Sans", sans-serif;
     --font-jakarta: "Plus Jakarta Sans", sans-serif;
     --font-readex: "Readex Pro", sans-serif;
+    --font-roboto: "Roboto", sans-serif;
 }

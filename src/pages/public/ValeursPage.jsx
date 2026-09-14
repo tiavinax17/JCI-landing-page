@@ -5,6 +5,7 @@ import LabelTrait from "../../components/ui/LabelTrait"
 import LabelTraitSimple from "../../components/ui/LabelTraitSimple"
 import ValueCredoBlock from "../../components/ui/ValueCredoBlock"
 import CWilliam from "../../images/JCI/JCI Madagascar/C.-William-Brownfield.jpg"
+import DecoFond from "../../images/Vector.png"
 
 const credo = [
   {
@@ -38,7 +39,7 @@ const ValeursPage = () => {
     <div className='min-h-screen font-poppins flex flex-col items-start pt-25 pb-10 px-6 lg:pl-33 lg:pr-10 bg-jci-black gap-2'>
       <SubNav />
       <div className="flex flex-col gap-0 lg:ml-20 lg:mr-1">
-        <div className="flex lg:flex-row flex-col  bg-jci-white gap-10 rounded-t-xl px-10 pt-5 lg:pr-20">
+        <div className="group flex lg:flex-row flex-col  bg-jci-white gap-10 rounded-t-xl px-10 pt-5 lg:pr-20">
           <div className='flex flex-1 md:flex-2 flex-col gap-1 items-start text-start max-w-full '>
             <LabelTraitSimple Label="Le début d'une grande histoire" H1Text="LE CREDO" />
             <p className='text-[12px] font-normal font-poppins text-jci-black text-justify'>
@@ -162,15 +163,16 @@ const ValeursPage = () => {
           </div>
         </div>
 
-        <div className='flex flex-col gap-5 items-start text-start max-w-full  bg-jci-white  rounded-b-xl px-10 lg:pr-20 pb-20'>
-          <div className='flex flex-col gap-2 items-start text-start '>
+        <div className='relative flex flex-col gap-5 items-start text-start max-w-full  bg-jci-white  rounded-b-xl px-10 lg:pr-20 pb-20'>
+          <img src={DecoFond} alt="" className="absolute bottom-0 right-0 lg:w-80 lg:h-80 opacity-100 " />
+          <div className='group flex flex-col gap-2 items-start text-start '>
             
             <LabelTraitSimple Label="NOTRE" H1Text="MISSION" />
             <p className='text-[12px] font-normal font-poppins text-jci-black '>
                 Offrir aux jeunes des opportunités de développement de leadership en leur donnant la capacité de créer des changements positifs.
             </p>
           </div>
-          <div className='flex flex-col gap-2 items-start text-start '>
+          <div className='group flex flex-col gap-2 items-start text-start '>
             <LabelTraitSimple Label="NOTRE" H1Text="VISION" />
             <p className='text-[12px] font-normal font-poppins text-jci-black text-justify'>
               Être le principal réseau mondial de jeunes leaders.

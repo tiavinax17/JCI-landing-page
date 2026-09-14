@@ -14,7 +14,7 @@ const BNCard = ({ image, firstName, lastName, role }) => {
                     <img
                         src={image}
                         alt=""
-                        className="w-full h-full object-cover rounded-full"
+                        className="w-full h-full object-cover rounded-full hover:scale-105 transition-all duration-300"
                         loading="lazy"
                     />
                 </div>

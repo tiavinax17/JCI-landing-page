@@ -1,0 +1,167 @@
+========================================
+PAGE : ACCUEIL
+========================================
+
+--- NAVBAR ---
+Rechercher ...
+Français
+Boutique en ligne
+
+--- MENU PRINCIPAL ---
+Accueil
+JCI Madagascar
+Organisations Locales
+Blog
+Partenaires
+Contact
+Devenir membre
+
+--- HERO / BANDEAU ---
+36 ANS
+
+========================================
+SECTION : QUI SOMMES-NOUS ?
+========================================
+
+Label : QUI SOMMES-NOUS ?
+Titre : La JCI Madagascar
+Texte :
+est une organisation à but non lucratif dédiée aux jeunes leaders entreprenants âgés de 18 à 40 ans.
+Nous œuvrons pour le développement professionnel, la création d'opportunités économiques et l'élaboration de solutions innovantes face aux défis sociétaux.
+Bouton : Lire la suite
+
+--- SOUS-SECTION : NOS CADRES D'ACTIONS ---
+Label : QU'EST-CE QUE NOUS FAISONS ?
+Titre : Nos cadres d'actions
+Texte :
+À la Jeune Chambre Internationale, nous nous lançons le défi d'identifier les leviers stratégiques mondiaux permettant à nos membres de maximiser l'efficacité de leurs actions pour résoudre les problématiques qu'encourt notre société tout en renforçant leurs compétences et leur leadership à travers divers programmes.
+
+Liste :
+- Développement individuel
+- Impact communautaire
+- Affaires et Entreprenariat
+- Coopération internationale
+
+Bouton : Nos projets
+
+--- CARTE / STATISTIQUES ---
+384 Membres
+14 OLs
+
+--- SOUS-SECTION : NOS VALEURS ---
+Label : NOS VALEURS
+
+Notre Mission :
+Offrir aux jeunes des opportunités de développement de leadership en leur donnant la capacité de créer des changements positifs.
+
+Notre Vision :
+Être le principal réseau mondial de jeunes leaders.
+
+Notre Credo :
+- Que la foi en Dieu donne à la vie son véritable sens
+- Que la fraternité humaine transcende la souveraineté des nations
+- Que le gouvernement doit s'appuyer sur la loi et non sur l'arbitraire
+- Que la liberté des individus et des entreprises assure au mieux la justice économique
+- Que la personne humaine est la plus précieuse des richesses
+- Et que servir l'humanité constitue l'œuvre la plus noble d'une vie
+
+Bouton : Lire la suite
+
+--- SOUS-SECTION : NOS PROGRAMMES ---
+Label : NOS PROGRAMMES
+Titre : Nos Programmes
+Texte : À travers des divers programmes :
+
+Liste :
+- La JMA (JCI Malagasy Academy)
+- Art Oratoire & Débat
+- TOYP (Ten Outstanding Young Persons)
+- CYE (Creative Young Entrepreneur)
+
+Bouton : Lire la suite
+
+========================================
+SECTION : DÉCOUVREZ NOS PARTENAIRES
+========================================
+
+Label : ACTUALITÉS & ÉVÉNEMENTS
+Titre : Découvrez nos partenaires
+Sous-titre : Explorez nos partenaires nationaux
+
+Liste des partenaires :
+- Midi Madagasikara
+- Orange Madagascar
+- Groupe Kentia
+- iN Studio
+- Koon Space
+
+========================================
+SECTION : ACTUALITÉS & ÉVÉNEMENTS
+========================================
+
+Label : ACTUALITÉS & ÉVÉNEMENTS
+Titre : Restez connecté
+Texte : Découvrez toutes les actualités autour de la JCI et les évènements à venir.
+
+--- CARTE ÉVÉNEMENT 1 ---
+Date : 01 OCT
+Type : Event
+Titre : Convention Nationale 2026
+Texte : La Convention Nationale est la rencontre de tous les jaycees de la Grande Île pour faire le bilan de l'année et préparer la prochaine.
+
+--- CARTE ÉVÉNEMENT 2 ---
+Date : 11 NOV
+Type : Event
+Titre : Congrès mondial 2026
+Texte : Le plus grand rassemblement mondial de jeunes leaders — 6 000+ délégués, 120+ nations, une ville hôte et acceuilli par la JCI Philippines.
+
+--- CARTE ÉVÉNEMENT 3 ---
+Date : ... AOUT
+Type : Actus
+Titre : JCI Madagascar x iSeven Studio
+Texte : Le futur partenaire technologique de la JCI Madagascar.
+
+--- CARTE ÉVÉNEMENT 4 ---
+Date : 15 Janv
+Type : Event
+Titre : Rentrée Solennelle 2025
+Texte : La Rentrée Solennelle 2025 de la JCI Madagascar soulignera le lancement officiel du mandat de cette année.
+
+Bouton : Voir plus
+
+========================================
+FOOTER
+========================================
+
+--- LIENS UTILES ---
+Nos valeurs
+Nos programmes
+JCI business
+JCI RISE
+
+--- DERNIÈRES ARTICLES ---
+Event - Convention Nationale 2026
+Event - Congrès mondial 2026
+Actus - Réfonte du site web
+
+--- INFORMATIONS LÉGALES ---
+Conditions générales d'utilisation
+Conditions générales de vente
+Politique de confidentialité
+
+--- PARTENAIRES ---
+Midi Madagasikara
+Orange
+Groupe Kentia
+iN Studio
+Koon Space
+
+--- NOUS CONTACTER ---
+Bouton : Nous Contacter
+
+--- COPYRIGHT ---
+Copyright © 2026. iSeven Studio
+contact@jcimada.org
+JCI Madagascar
+Instagram/lien
+Linkedin/lien

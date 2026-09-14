@@ -1,11 +1,11 @@
 import SubNav from "../../components/layout/SubNav"
 import H1 from "../../components/ui/H1"
-import H2 from "../../components/ui/H2"
-import LabelTrait from "../../components/ui/LabelTrait"
 import StatBlock from "../../components/ui/StatBlock"
-import TimelineItem from "../../components/ui/TimelineItem"
-import TestImg from "../../images/testImg.jpg"
-import Timeline from "../../images/timeline.png"
+import TestImg from "../../images/Photos corporate BN/DPN 2026 .svg"
+import HistoriqueImg1 from "../../images/Historique1.png"
+import HistoriqueImg2 from "../../images/Historique2.png"
+import Timeline from "../../images/timeline.svg"
+import LabelTraitSimple from './../../components/ui/LabelTraitSimple';
 
 // données de remplacement en attendant la liste officielle des présidents nationaux
 const presidents = [
@@ -23,14 +23,10 @@ const HistoriquePage = () => {
       <SubNav />
 
       <div className="flex flex-col gap-0 lg:ml-20 lg:mr-1">
-        <div className='flex flex-row gap-20 items-start text-start max-w-full  bg-jci-white  rounded-t-xl p-5 lg:pr-20'>
-          <div className='flex flex-col gap-5'>
+        <div className='flex flex-col lg:flex-row gap-20 items-start text-start max-w-full  bg-jci-white  rounded-t-xl lg:px-10 p-5 lg:pr-20'>
+          <div className='group flex flex-col flex-1 md:flex-1 lg:flex-2 gap-0 lg:gap-5'>
             <div>
-              <div className='flex flex-row items-center'>
-                <p className='text-jci-teal text-[8px] font-bold font-noto'>HISTORIQUE</p>
-                <div className='ml-2 h-[0.5px] w-20 bg-jci-yellow '> </div>
-              </div>
-              <H1>LA JCI MADAGASCAR</H1>
+              <LabelTraitSimple Label="HISTORIQUE" H1Text="LA JCI MADAGASCAR" LabelColor="text-jci-teal" H1Color="text-jci-black" />
               <p className='text-[11px] font-normal text-jci-black text-justify'>
                 La JCI Madagascar est affiliée à la JCI depuis 1960 grâce à son Président Fondateur Charles Andriantsitohaina.
                 Après quelques années de sommeil, la renaissance a été initiée par le Président Christian RAZAFIMANDIMBY en 1987,
@@ -42,35 +38,31 @@ const HistoriquePage = () => {
                 (premier guide de création d'entreprise en 10.000 exemplaires), Trophée JCE (award qui récompensait les entreprises performantes).
               </p>
             </div>
-            <div className='flex flex-row gap-3 mt-10 items-center  justify-center w-full'>
+            <div className='grid lg:grid-cols-3 grid-cols-2 gap-3 mt-10 items-center self-center justify-center lg:w-[60%]'>
               <StatBlock Value="36" Label="ANS" TextColor2="text-jci-black" BGColor="bg-jci-teal" TextColor3="text-jci-white" />
               <StatBlock Value="14" Label="OLs" TextColor2="text-jci-black" BGColor="bg-jci-teal" TextColor3="text-jci-white" />
               <StatBlock Value="384" Label="Membres" TextColor2="text-jci-black" BGColor="bg-jci-teal" TextColor3="text-jci-white" />
             </div>
-            <div>
-              <img src={Timeline} alt="" className="h-auto w-full " />
+            <div className='w-full mt-5 lg:0 items-center  flex justify-center'>
+              <img src={Timeline} alt="" className="h-auto w-[90%] " />
             </div>
           </div>
-          <div className='flex flex-col gap-1 w-full'>
-            <img src={TestImg} alt="" className="h-60 w-auto rounded" loading="lazy" />
-            <img src={TestImg} alt="" className="h-60 w-auto rounded" loading="lazy" />
+          <div className='flex flex-1 flex-col gap-1 w-full'>
+            <img src={HistoriqueImg1} alt="" className="h-auto w-full rounded object-cover hover:scale-105  transition-all duration-300" loading="lazy" />
+            <img src={HistoriqueImg2} alt="" className="h-auto w-full rounded object-cover hover:scale-105  transition-all duration-300" loading="lazy" />
           </div>
         </div>
 
-        <div className='flex flex-col flex-wrap gap-3 justify-start max-w-full   bg-jci-white  p-5 lg:pr-20 rounded-b-xl'>
-          <div className='flex flex-col gap-1'>
-            <div className='flex flex-row items-center'>
-              <p className='text-jci-teal text-[8px] font-bold font-noto'>LISTES</p>
-              <div className='ml-2 h-[0.5px] w-20 bg-jci-yellow '> </div>
-            </div>
-            <H1>DES PRÉSIDENTS NATIONAUX</H1>
+        <div className='group flex flex-col flex-wrap gap-3 justify-start max-w-full -mt-1   bg-jci-white  p-5 lg:pr-20 rounded-b-xl'>
+          <div className=' flex flex-col gap-1'>
+            <LabelTraitSimple Label="LISTES" H1Text="DES PRÉSIDENTS NATIONAUX" LabelColor="text-jci-teal" H1Color="text-jci-black" />
           </div>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-1  items-start'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1  items-start'>
             {presidents.map((president, index) => (
               <div key={index} className='relative flex flex-col gap-1 p-2 border border-[#F9F9F9] bg-[#F9F9F9] rounded'>
                 <div className="flex flex-row gap-3">
-                  <div className="rounded-full border-2 border-jci-yellow">
-                    <div className="rounded-full border border-green-500">
+                  <div className=" ">
+                    <div className="rounded-full border-2 border-green-500">
                       <img src={president.Image} alt={president.Name} className="h-10 w-10 rounded-full object-cover" loading="lazy"/>
                     </div>
                   </div>

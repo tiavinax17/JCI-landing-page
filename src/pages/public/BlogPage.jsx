@@ -58,7 +58,7 @@ const BlogPage = () => {
               Actualités & événements
             </p>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-6 w-fit self-center lg:w-full max-w-6xl'>
+          <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-6 w-fit self-center lg:w-full max-w-6xl'>
             {events.map((event) => (
               <EventCard key={event.Title} Img={ImgTest} {...event} />
             ))}
