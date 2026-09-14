@@ -14,8 +14,6 @@ import OrangeFond from "../../images/Partenariat/Orange.png"
 import ISevenLogo from "../../images/LOGO-OTHER/I0SevenStudio.png"
 import ISevenFond from "../../images/Partenariat/ISeven.png"
 
-import TestImg from "../../images/testImg.jpg"
-
 // Données de démonstration en attendant le contenu officiel des partenaires
 const partners = [
   {
