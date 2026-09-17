@@ -12,6 +12,18 @@ import BlogPage from "../pages/public/BlogPage";
 import PartenairesPage from "../pages/public/PartenairesPage";
 import ContactPage from "../pages/public/ContactPage";
 import NotFoundPage from "../pages/public/NotFoundPage";
+import LoginPage from "../pages/public/LoginPage";
+import RoleRoute from "./RoleRoute";
+import AdminLayout from "../layouts/AdminLayout";
+import UserManager from "../pages/admin/UserManager";
+import EventsManager from "../pages/admin/EventsManager";
+import PastPresidentManager from "../pages/admin/PastPresidentManager";
+import BnManager from "../pages/admin/BnManager";
+import ZonesManager from "../pages/admin/ZonesManager";
+import ZonesDetailsManager from "../pages/admin/ZonesDetailsManager";
+import OLDetainsManager from './../pages/admin/OLDetainsManager';
+
+
 
 const AppRoutes = () => {
   return (
@@ -19,6 +31,7 @@ const AppRoutes = () => {
         {/*when no user is connected */}
         <Route element={<PublicLayout/>}>
             <Route path="/" element={<AcceuilPage/>}/>
+            <Route path="/connexion" element={<LoginPage/>}/>
             <Route path="/jci-madagascar" element={<HistoriquePage/>}/>
             <Route path="/jci-madagascar/valeurs" element={<ValeursPage/>}/>
             <Route path="/jci-madagascar/bureau-national" element={<BureauNationalPage/>}/>
@@ -30,20 +43,27 @@ const AppRoutes = () => {
             <Route path="/partenaires" element={<PartenairesPage/>}/>
             <Route path="/contact" element={<ContactPage/>}/>
             <Route path="*" element={<NotFoundPage/>}/>
-
         </Route>
 
         {/*when user is connected*/}
-        {/* <Route element={<BackOfficeLayout/>}>
-             <Route path="/admin/services" element={<ServicesPages/>}/>
-             <Route path="/admin/services/:state" element={<EditServices/>}/>
-             <Route path="/admin/services/services-details" element={<ServiceDetailsPages/>}/>
-             <Route path="/admin/services/services-details/:state/:id" element={<EditServiceDetails/>}/>
-             <Route path="/admin/parametres" element={<SettingsPages/>}/>
-             <Route path="/admin/emplois" element={<JobPages/>}/>
-             <Route path="/admin/emplois/:state" element={<EditJob/>}/>
-             <Route path="*" element={<NotFound/>}/>
-        </Route> */}
+        <Route element={<AdminLayout/>}>
+          {/* Routes ADMIN_NATIONAL */}
+          <Route element={<RoleRoute allowedRoles={["ADMIN_NATIONAL","SUPER_ADMIN"]} />}>
+            <Route path="/admin" element={<UserManager />} />
+            <Route path="/admin/evenements" element={<EventsManager />} />
+            <Route path="/admin/past-president" element={<PastPresidentManager />} />
+            <Route path="/admin/bureau-national" element={<BnManager />} />
+            <Route path="/admin/zones" element={<ZonesManager />} />
+            <Route path="/admin/zones/:zone" element={<ZonesDetailsManager />} />
+            <Route path="/admin/zones/organisations-locale/:zone/:olId" element={<OLDetainsManager />} />
+          </Route>
+
+          {/* Routes ADMIN_LOCAL */}
+          <Route element={<RoleRoute allowedRoles={["ADMIN_LOCAL"]} />}>
+            {/* <Route path="local" element={<LocalDashboard />} />
+            <Route path="membres" element={<MembersPage />} /> */}
+          </Route>
+        </Route>
 
     </Routes>
   )

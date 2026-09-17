@@ -21,8 +21,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [flag, setFlag] = useState("fr");
-
+  
   return (
     <>
     <div className='hidden lg:flex fixed top-4 left-8 h-screen w-fit  px-1  rounded flex-col gap-2 z-50 justify-start '> 
