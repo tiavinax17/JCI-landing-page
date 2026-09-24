@@ -21,7 +21,7 @@ const AdminLayout = () => {
   return (
     <div className='flex flex-row'>
       <SidebarAdmin/>
-       <main className="ml-60 w-full">
+       <main className="md:ml-60 w-full">
         <Outlet />
       </main>
     </div>

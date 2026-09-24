@@ -1,4 +1,5 @@
 import { Route,Routes } from "react-router";
+import EventsDetails from "../pages/public/EventsDetails";
 import PublicLayout from "../layouts/PublicLayout";
 import AcceuilPage from "../pages/public/AcceuilPage";
 import HistoriquePage from "../pages/public/HistoriquePage";
@@ -22,10 +23,15 @@ import BnManager from "../pages/admin/BnManager";
 import ZonesManager from "../pages/admin/ZonesManager";
 import ZonesDetailsManager from "../pages/admin/ZonesDetailsManager";
 import OLDetainsManager from './../pages/admin/OLDetainsManager';
-
+import EventsDetailsManager from "../pages/admin/EventsDetailsManager";
+import CGUPage from "../pages/public/CGUPage";
+import PolitiqueConfidentialitePage from "../pages/public/PolitiqueConfidentialitePage";
+import ConditionsGeneralesVentePage from "../pages/public/ConditionsGeneralesVentePage";
+import Ecommerce from "../pages/admin/Ecommerce";
 
 
 const AppRoutes = () => {
+  
   return (
     <Routes>
         {/*when no user is connected */}
@@ -40,9 +46,14 @@ const AppRoutes = () => {
             <Route path="/organisations-locales" element={<OrganisationsLocalesPage/>}/>
             <Route path="/organisations-locales/:zone" element={<ZonePage/>}/>
             <Route path="/blog" element={<BlogPage/>}/>
+            <Route path="/blog/evenements/:eventId" element={<EventsDetails />} />
             <Route path="/partenaires" element={<PartenairesPage/>}/>
             <Route path="/contact" element={<ContactPage/>}/>
             <Route path="*" element={<NotFoundPage/>}/>
+            <Route path="/conditions-generales-utilisation" element={<CGUPage />} />
+            <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialitePage />} />
+            <Route path="/conditions-generales-de-vente" element={<ConditionsGeneralesVentePage />}
+/>
         </Route>
 
         {/*when user is connected*/}
@@ -50,18 +61,25 @@ const AppRoutes = () => {
           {/* Routes ADMIN_NATIONAL */}
           <Route element={<RoleRoute allowedRoles={["ADMIN_NATIONAL","SUPER_ADMIN"]} />}>
             <Route path="/admin" element={<UserManager />} />
-            <Route path="/admin/evenements" element={<EventsManager />} />
+            <Route path="/admin/evenements/national" element={<EventsManager />} />
             <Route path="/admin/past-president" element={<PastPresidentManager />} />
             <Route path="/admin/bureau-national" element={<BnManager />} />
             <Route path="/admin/zones" element={<ZonesManager />} />
             <Route path="/admin/zones/:zone" element={<ZonesDetailsManager />} />
-            <Route path="/admin/zones/organisations-locale/:zone/:olId" element={<OLDetainsManager />} />
+            <Route path="/admin/zones/:zone/organisations-locale/:olId" element={<OLDetainsManager />} />
+            <Route path="/admin/zones/:zone/organisations-locale/:olId/evenements/:eventId" element={<EventsDetailsManager />} />
+            <Route path="/admin/evenements/national/:eventId" element={<EventsDetailsManager />} />
+            <Route path="/admin/e-commerce" element={<Ecommerce />} /> 
           </Route>
 
           {/* Routes ADMIN_LOCAL */}
           <Route element={<RoleRoute allowedRoles={["ADMIN_LOCAL"]} />}>
-            {/* <Route path="local" element={<LocalDashboard />} />
-            <Route path="membres" element={<MembersPage />} /> */}
+            <Route path="/admin/local/mon-organisation-locale" element={<OLDetainsManager />} /> 
+            <Route path="/admin/local/mon-organisation-locale/:olId/evenements/:eventId" element={<EventsDetailsManager />} />
+          </Route>
+          {/* Routes ADMIN_Ecommerce*/}
+          <Route element={<RoleRoute allowedRoles={["ADMIN_E_COMMERCE"]} />}>
+            <Route path="/admin/e-commerce/boutique" element={<Ecommerce />} /> 
           </Route>
         </Route>
 

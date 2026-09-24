@@ -1,72 +1,169 @@
-import SubNav from "../../components/layout/SubNav"
-import H1 from "../../components/ui/H1"
-import LabelTrait from "../../components/ui/LabelTrait"
-import LabelTraitSimple from "../../components/ui/LabelTraitSimple"
-import MemberCard from "../../components/ui/MemberCard"
-import DN from "../../images/Photos corporate BN/DN2026.png"
-import SG from "../../images/Photos corporate BN/SG.png"
-import IPPN from "../../images/Photos corporate BN/IPPN Hugues.jpg"
-import TN from "../../images/Photos corporate BN/TRN JOUBER.jpg"
-import CJN from "../../images/Photos corporate BN/ANJ ID_JCI.png"
-import VPEN from "../../images/Photos corporate BN/VPEN.svg"
-import VPNZN from "../../images/Photos corporate BN/VPN Franco Joël.svg"
-import VPNZC from "../../images/Photos corporate BN/JCI_Anjara VPN _2026_1 (2).jpeg"
-import VPNZS from "../../images/Photos corporate BN/VPN Emilie.png"
-import DNIN from "../../images/Photos corporate BN/DNIN.svg"
-import DPF from "../../images/Photos corporate BN/Dir Partenariat- Mamy RABEARILAZA.JPG"
-import DINDC from "../../images/Photos corporate BN/DINDC Tiffany RANDRIANARIVO.png"
-import DPN from "../../images/Photos corporate BN/DPN 2026 .svg"
-import DNM from "../../images/Photos corporate BN/DNM_2026.svg"
-import BNCard from "../../components/ui/BNCard"
-
-// Source: content/Bureau national 2026.pdf
-const members = [
-  { Name: "RAKOTOBE", FirstName: "Manjatosoa Minah", Role: "Présidente nationale" ,Image: DN },
-  { Name: "RAKOTONIRINA", FirstName: "Miharisoa Barinia", Role: "Secrétaire général" ,Image: SG},
-  { Name: "HAMBA", FirstName: "Tianjara Hugues", Role: "Immediat past président" ,Image: IPPN },
-  { Name: "MAYET", FirstName: "Jouber", Role: "Trésorier national" ,Image: TN },
-  { Name: "RATSIRAHONANA", FirstName: "Ando", Role: "Conseiller juridique national" ,Image: CJN },
-  { Name: "RALALA", FirstName: "Mialitiana", Role: "Vice Présidente Exécutive National" ,Image: VPEN },
-  { Name: "ANDRIAMAMPIONONA", FirstName: "Fanco Joël", Role: "Vice Président National zone nord" ,Image: VPNZN },
-  { Name: "RAKOTONARIVO", FirstName: "Anjarasoa", Role: "Vice Président National zone centre" ,Image: VPNZC },
-  { Name: "RASOANINDRINA", FirstName: "Emilie", Role: "Vice Présidente National zone Sud" ,Image: VPNZS },
-  { Name: "ANDRIANARIVONY", FirstName: "Tamby", Role: "Directeur de l'innovation Numérique" ,Image: DNIN },
-  { Name: "RABEARILAZA", FirstName: "Mamy", Role: "Directeur Partenariat et Fundraising" ,Image: DPF },
-  { Name: "RANDRIANARIVO", FirstName: "Tiffany", Role: "Directeur de Développement de Compétence" ,Image: DINDC },
-  { Name: "MANITRIAVY", FirstName: "Melissa Martina", Role: "Directeur des Programmes Nationaux" ,Image: DPN },
-  { Name: "RABEFARIHY", FirstName: "Ando Nirina", Role: "Directeur du membership" ,Image: DNM },
-]
+import SubNav from "../../components/layout/SubNav";
+import LabelTraitSimple from "../../components/ui/LabelTraitSimple";
+import BNCard from "../../components/ui/BNCard";
+import { useState, useEffect } from "react";
+import { bnAPI } from "../../services/api.js";
+import { toast } from "sonner";
 
 const BureauNationalPage = () => {
+  const [bnList, setBnList] = useState([]);
+
+  useEffect(() => {
+    const fetchBureauNational = async () => {
+      try {
+        const res = await bnAPI.getAll();
+        setBnList(res.data);
+      } catch (error) {
+        console.error("Error fetching Bureau National list:", error);
+        toast.error("Error fetching Bureau National list");
+      }
+    };
+
+    fetchBureauNational();
+  }, []);
+
   return (
-    <div className='min-h-screen font-poppins flex flex-col items-start pt-25 pb-10 px-6 lg:pl-33 lg:pr-10 bg-jci-black gap-2'>
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden font-poppins flex flex-col items-start pt-25 pb-10 px-6 lg:pl-33 lg:pr-10 bg-jci-black gap-2">
+
       <SubNav />
-      <div className="group flex flex-col gap-0 lg:ml-20 lg:mr-1">
-          <div className="flex flex-col  bg-jci-white gap-2 rounded-t-xl px-10 pt-5 lg:pr-20">
-            <LabelTraitSimple Label="LES MEMBRES DU" H1Text="BUREAU NATIONAL 2026" />
-            <p className='text-[12px] font-normal font-poppins text-jci-black text-justify'>
-              Découvrez les membres du Bureau National 2026 de la JCI Madagascar. Une équipe engagée de jeunes leaders dédiée à la
-              conduite des projets stratégiques, au renforcement des compétences et à la création d'impacts positifs à travers
-              toutes les organisations locales de la Grande Île.
-            </p>
+
+      <div className="group flex flex-col gap-0 w-[94%] min-w-0 lg:ml-20 lg:mr-1">
+
+        {/* HEADER */}
+        <div className="flex flex-col bg-jci-white gap-2 rounded-t-xl px-6 sm:px-10 pt-5 lg:pr-20">
+          <LabelTraitSimple
+            Label="LES MEMBRES DU"
+            H1Text="BUREAU NATIONAL 2026"
+          />
+
+          <p className="text-[12px] font-normal font-poppins text-jci-black text-justify">
+            Découvrez les membres du Bureau National 2026 de la JCI Madagascar.
+            Une équipe engagée de jeunes leaders dédiée à la conduite des
+            projets stratégiques, au renforcement des compétences et à la
+            création d'impacts positifs à travers toutes les organisations
+            locales de la Grande Île.
+          </p>
         </div>
-          <div className="flex flex-col  bg-jci-white gap-2 rounded-b-xl px-10 py-10 lg:pr-20 -mt-1">
-         <div className="grid md:grid-cols-3 lg:grid-cols-5 grid-cols-1 gap-3">
-            {members.map((member, index) => (
-              <BNCard
-                key={index}
-                image={member.Image}
-                firstName={member.FirstName}
-                lastName={member.Name}
-                role={member.Role}
-              />
-            ))}
+
+        {/* MEMBRES */}
+        <div className="flex flex-col  rounded-b-xl py-10 -mt-1 w-full min-w-0 bg-jci-white md:px-10 px-5 ">
+
+          {/* ================= MOBILE ================= */}
+          <div className="sm:hidden w-full min-w-0 overflow-hidden">
+            <div className="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+
+              {bnList.length > 0 ? (
+                bnList.map((member) => (
+                  <div
+                    key={member.id}
+                    className="shrink-0 w-full min-w-0 snap-center snap-always px-6"
+                  >
+                    <BNCard
+                      image={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${member.imgUrl}`}
+                      firstName={member.firstName}
+                      lastName={member.name}
+                      role={member.title}
+                    />
+                  </div>
+                ))
+              ) : (
+                <div className="shrink-0 w-full min-w-0 px-6">
+                  <div className="w-full p-3 pb-2 border border-gray-400/50 rounded-xl flex flex-col justify-between bg-gray-200 animate-pulse">
+
+                    <div className="flex flex-col justify-center items-center">
+
+                      <div className="w-[95%] aspect-square rounded-full border border-jci-black/30">
+
+                        <div className="w-full aspect-square rounded-full border-gray-300 border-[8px]">
+
+                          <div className="w-full aspect-square rounded-full border-[2px] border-jci-black/40 overflow-hidden">
+                            <img
+                              src=""
+                              alt=""
+                              className="w-full h-full object-cover rounded-full"
+                            />
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <div className="text-center text-[clamp(10px,1.2vw,15px)] flex flex-col gap-0 text-jci-black font-poppins">
+
+                        <div className="h-4 bg-gray-300 rounded w-30 mx-auto"></div>
+
+                        <div className="h-4 bg-gray-400 rounded w-30 mx-auto mt-1"></div>
+
+                      </div>
+
+                    </div>
+
+                    <div className="h-4 bg-gray-400 rounded w-30 mx-auto mt-1"></div>
+
+                  </div>
+                </div>
+              )}
+
+            </div>
+          </div>
+
+
+          {/* ================= TABLET / DESKTOP ================= */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-3 w-fit  lg:w-full   0">
+
+            {bnList.length > 0 ? (
+              bnList.map((member) => (
+                <BNCard
+                  key={member.id}
+                  image={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${member.imgUrl}`}
+                  firstName={member.firstName}
+                  lastName={member.name}
+                  role={member.title}
+                />
+              ))
+            ) : (
+              <div className="w-full p-3 pb-2 border border-gray-400/50 rounded-xl flex flex-col justify-between bg-gray-200 animate-pulse">
+
+                <div className="flex flex-col justify-center items-center">
+
+                  <div className="w-[95%] aspect-square rounded-full border border-jci-black/30">
+
+                    <div className="w-full aspect-square rounded-full border-gray-300 border-[8px]">
+
+                      <div className="w-full aspect-square rounded-full border-[2px] border-jci-black/40 overflow-hidden">
+                        <img
+                          src=""
+                          alt=""
+                          className="w-full h-full object-cover rounded-full"
+                        />
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div className="text-center text-[clamp(10px,1.2vw,15px)] flex flex-col gap-0 text-jci-black font-poppins">
+
+                    <div className="h-4 bg-gray-300 rounded w-30 mx-auto"></div>
+
+                    <div className="h-4 bg-gray-400 rounded w-30 mx-auto mt-1"></div>
+
+                  </div>
+
+                </div>
+
+                <div className="h-4 bg-gray-400 rounded w-30 mx-auto mt-1"></div>
+
+              </div>
+            )}
+
           </div>
 
         </div>
-        </div>
-    </div>
-  )
-}
 
-export default BureauNationalPage
+      </div>
+    </div>
+  );
+};
+
+export default BureauNationalPage;

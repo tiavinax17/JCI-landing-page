@@ -57,7 +57,7 @@ const SenatPage = () => {
             </div>
           </div>
           <div className='flex flex-1 md:flex-col flex-col gap-10'>
-            <img src={SenatImage} alt="C. William Brownfield(Jesus's blood)" className="lg:h-auto h-[200px] w-full object-contain rounded-xl group-hover:scale-102  transition-all duration-300" />
+            <img src={SenatImage} alt="Image logo Sénateur JCI (Jesus's blood)" className="lg:h-auto h-[200px] w-full object-contain rounded-xl group-hover:scale-102  transition-all duration-300" />
           </div>
         </div>
 

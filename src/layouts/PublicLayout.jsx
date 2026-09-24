@@ -18,7 +18,15 @@ const PublicLayout = () => {
         )
     }
     if(user){
-      return <Navigate to ="/admin" replace/>
+      if(user.role == "ADMIN_LOCAL"){
+        return <Navigate to ="/admin/local/mon-organisation-locale" replace/>
+      }
+      else if(user.role == "ADMIN_E_COMMERCE"){
+        return <Navigate to ="/admin/e-commerce/boutique" replace/>
+      }
+      else {
+        return <Navigate to ="/admin" replace/>
+      }
     }
 
   return (

@@ -1,23 +1,28 @@
 import SubNav from "../../components/layout/SubNav"
-import H1 from "../../components/ui/H1"
 import StatBlock from "../../components/ui/StatBlock"
-import TestImg from "../../images/Photos corporate BN/DPN 2026 .svg"
 import HistoriqueImg1 from "../../images/Historique1.png"
 import HistoriqueImg2 from "../../images/Historique2.png"
 import Timeline from "../../images/timeline.svg"
 import LabelTraitSimple from './../../components/ui/LabelTraitSimple';
+import { useEffect, useState } from "react"
+import { pastPresidentAPI } from "../../services/api.js";
 
-// données de remplacement en attendant la liste officielle des présidents nationaux
-const presidents = [
-  { Year: "1959", Name: "ANDRIATSITOHAINA Charles", Role: "Président Fondateur", Image: TestImg },
-  { Year: "1987", Name: "RAZAFIMANDIMBY Christian", Role: "Président (Renaissance)", Image: TestImg },
-  { Year: "1996", Name: "ANDRIATSITOHAINA Charles", Role: "Président National", Image: TestImg },
-  { Year: "2005", Name: "ANDRIATSITOHAINA Charles", Role: "Président National", Image: TestImg },
-  { Year: "2015", Name: "ANDRIATSITOHAINA Charles", Role: "Président National", Image: TestImg },
-  { Year: "2026", Name: "RAKOTOBE Manjatosoa Minah", Role: "Présidente Nationale", Image: TestImg },
-]
 
 const HistoriquePage = () => {
+  const [presidentsList, setPresidentsList] = useState([])
+
+  useEffect(() => {
+    const fetchPresidents = async () => {
+      try {
+        const res = await pastPresidentAPI.getAll();
+        setPresidentsList(res.data);
+      } catch (error) {
+        console.error("Error fetching presidents list:", error);
+      }
+    };
+
+    fetchPresidents();
+  }, [])
   return (
     <div className='min-h-screen font-poppins flex flex-col items-start pt-25 pb-10 px-6 lg:pl-33 lg:pr-10 bg-jci-black gap-2'>
       <SubNav />
@@ -57,26 +62,34 @@ const HistoriquePage = () => {
           <div className=' flex flex-col gap-1'>
             <LabelTraitSimple Label="LISTES" H1Text="DES PRÉSIDENTS NATIONAUX" LabelColor="text-jci-teal" H1Color="text-jci-black" />
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1  items-start'>
-            {presidents.map((president, index) => (
-              <div key={index} className='relative flex flex-col gap-1 p-2 border border-[#F9F9F9] bg-[#F9F9F9] rounded'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 items-start'>
+            {presidentsList?.length > 0 ? presidentsList?.map((president) => (
+              <div key={president?.id} className='relative flex flex-col gap-1 p-2 border border-[#F9F9F9] bg-[#F9F9F9] rounded'>
                 <div className="flex flex-row gap-3">
-                  <div className=" ">
+                  <div>
                     <div className="rounded-full border-2 border-green-500">
-                      <img src={president.Image} alt={president.Name} className="h-10 w-10 rounded-full object-cover" loading="lazy"/>
+                      <img src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${president?.imgUrl}`} alt={president?.name} className="h-10 w-10 rounded-full object-cover" loading="lazy"/>
                     </div>
                   </div>
                   <div className="flex flex-col justify-center gap-[0.5px]">
-                    <p className='text-[12px] font-bold text-jci-black'>{president.Name}</p>
-                    <p className='text-[11px] font-normal text-jci-black/50'>{president.Role}</p>
+                    <p className='text-[12px] font-bold text-jci-black'>{president?.name}</p>
                   </div>
                 </div>
                 <div className="px-3 md:px-2 py-0.5 bg-jci-yellow text-[7px] md:text-[9px] text-jci-black font-extrabold font-roboto text-center absolute bottom-1 right-0">
-                  {president.Year}
+                  {president?.year}
                 </div>
               </div>  
-            ))}
-
+            )) : (
+              <div className='relative flex flex-col gap-1 p-2 border border-[#F9F9F9] bg-[#F9F9F9] rounded animate-pulse'>
+                <div className="flex flex-row gap-3">
+                  <div className="h-10 w-10 rounded-full border-2 border-gray-300 bg-gray-300"></div>
+                  <div className="flex flex-col justify-center gap-[4px]">
+                    <div className="h-3 w-24 bg-gray-300 rounded"></div>
+                  </div>
+                </div>
+                <div className="h-3 w-8 bg-gray-300 rounded absolute bottom-1 right-2"></div>
+              </div>
+            )}
           </div>
         </div>
       </div>

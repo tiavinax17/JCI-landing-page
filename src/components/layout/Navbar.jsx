@@ -7,6 +7,7 @@ import ButtonFull from './../ui/ButtonFull';
 import { ShoppingCart } from 'lucide-react';
 import JCILogo from "../../images/JCI/JCI Madagascar/JCI_Madagascar_background_marine_blue_name_blue_logo-removebg-preview.png" 
 import BuildLegacyLogo from "../../images/Charte Build Legacy Together/BLT Blanc/BLT-07.png"
+import QR from "../../images/QRWhite.svg"
 
 const navActiveClass = ({ isActive }) => isActive ? "text-jci-yellow scale-105 " : "text-jci-white hover:scale-105 transition-transform duration-300 hover:text-jci-yellow";
 
@@ -35,12 +36,16 @@ const Navbar = () => {
                     <NavLink key={link.to} to={link.to} className={navActiveClass} end={link.end}>{link.label}</NavLink>
                 ))}
             </div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 items-center">
+                {/* <a href="https://linktr.ee/JCI_Madagascar" target="_blank" rel="noopener noreferrer">
+                    <img src={QR} alt="QR Code" className="h-30 w-30 mt-4"/>
+                </a> */}
                 <SocialIconsRow />
                 <ButtonVoid
                     TextColor="text-jci-yellow"
                     SizeText="12px"
-                >Devenir membre <LogIn size={20}/></ButtonVoid>
+                    path="/blog"
+                >Decouvrir nos projets</ButtonVoid>
             </div>
         </div> 
     </div>

@@ -2,8 +2,7 @@ import React from 'react'
 import { PiBagSimpleDuotone } from "react-icons/pi";
 const BNCard = ({ image, firstName, lastName, role }) => {
   return (
-    <div className="w-full p-3 pb-2 border border-gray-400/50 rounded-xl flex flex-col justify-between">
-    
+<div className="w-full max-w-full min-w-0 p-3 pb-2 border border-gray-400/50 rounded-xl flex flex-col justify-between">    
     <div className="flex flex-col justify-center items-center">
 
         <div className="w-[95%] aspect-square rounded-full border border-jci-black/30 ">

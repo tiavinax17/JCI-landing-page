@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useForm } from "react-hook-form";
-import { IoAdd, IoClose } from "react-icons/io5";
+import { IoAdd, IoClose, IoImages } from "react-icons/io5";
 import { zonesAPI, olAPI } from "../../services/api";
 import LabelTraitSimple from "../../components/ui/LabelTraitSimple";
 import { FaPen, FaRegTrashCan } from "react-icons/fa6";
 import { LuExternalLink } from "react-icons/lu";
+import { NavLink } from "react-router";
+import { MdArrowForwardIos } from "react-icons/md";
+import {toast} from "sonner";
+
 const ZonesDetailsManager = () => {
     const [zoneDetails, setZoneDetails] = useState(null);
     const [zonePsd, setZonePsd] = useState(null);
@@ -107,9 +111,11 @@ const ZonesDetailsManager = () => {
 
             // Vérifie si nous sommes en mode édition ou création
             if (isEdit) {
-                await zonesAPI.updatePsd(zonePsd.id, formData);
+                const res = await zonesAPI.updatePsd(zonePsd.id, formData);
+                toast.success(res.data.message);
             } else {
-                await zonesAPI.createPsd(formData);
+                const res = await zonesAPI.createPsd(formData);
+                toast.success(res.data.message);
             }
 
             const response = await zonesAPI.getPsdByZoneId(zoneDetails.id);
@@ -125,6 +131,7 @@ const ZonesDetailsManager = () => {
                     : "Error creating zone president:",
                 error
             );
+            toast.error(error.response?.data?.message || "Une erreur est survenue");
         } finally {
             setIsPending(false);
             setPendingAction(null);
@@ -136,12 +143,13 @@ const ZonesDetailsManager = () => {
 
         try {
             await zonesAPI.deletePsd(zonePsd.id);
-
+            toast.success("Zone president supprimé avec succès !");
             setZonePsd(null);
             setIsDeleteOpen(false);
 
         } catch (error) {
             console.error("Error deleting zone president:", error);
+            toast.error(error.response?.data?.message || "Une erreur est survenue");
         } finally {
             setIsPending(false);
             setPendingAction(null);
@@ -172,9 +180,11 @@ const ZonesDetailsManager = () => {
             formData.append("zoneId", zoneDetails.id);
 
             if (isOlEdit) {
-                await olAPI.update(olId, formData);
+                const res = await olAPI.update(olId, formData);
+                toast.success(res.data.message);
             } else {
-                await olAPI.create(formData);
+                const res = await olAPI.create(formData);
+                toast.success(res.data.message);
             }
 
             const response = await olAPI.getAll(zoneDetails.id);
@@ -189,6 +199,7 @@ const ZonesDetailsManager = () => {
                     : "Error creating OL:",
                 error
             );
+            toast.error(error.response?.data?.message || "Une erreur est survenue");
         } finally {
             setIsPending(false);
             setPendingAction(null);
@@ -207,10 +218,12 @@ const ZonesDetailsManager = () => {
                 prev.filter((ol) => ol.id !== olId)
             );
 
+            toast.success("OL supprimé avec succès !");
             setOlId(null);
 
         } catch (error) {
             console.error("Error deleting OL:", error);
+            toast.error(error.response?.data?.message || "Une erreur est survenue");
         } finally {
             setIsPending(false);
             setPendingAction(null);
@@ -270,7 +283,7 @@ const ZonesDetailsManager = () => {
    
 
     return (
-        <div className='relative p-10 flex flex-col items-start gap-5 bg-gray-100 w-full'>
+        <div className='relative p-10 flex flex-col items-start gap-5 bg-gray-100 w-full md:pt-0 pt-20'>
             {isPending && (
                 <div className='absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/60 backdrop-blur-sm z-10'>
                 <div className='w-8 h-8 border-4 border-jci-yellow border-t-transparent rounded-full animate-spin' />
@@ -282,10 +295,25 @@ const ZonesDetailsManager = () => {
                 </div>
             )}
             {/** Zone Details Section */}
-            <div className="w-[90%]">
+            <div className="md:w-[90%] w-full">
+                <h1 className='text-4xl font-bold text-jci-black font-poppins'>Gestion de la zone {zoneDetails?.name}</h1>
+                <div className='flex flex-row gap-2'>
+                    <NavLink
+                    to="/admin/zones"
+                    className=' py-2  rounded-lg text-jci-black font-semibold text-sm hover:underline cursor-pointer transition-colors duration-300 flex justify-center items-center'
+                    >
+                    Toutes les zones <MdArrowForwardIos size={16} />
+                    </NavLink>
+                    <NavLink
+                    to={`/admin/zones/${zone}`}
+                    className=' py-2  rounded-lg text-jci-yellow font-semibold text-sm hover:underline cursor-pointer transition-colors duration-300 flex justify-center items-center'
+                    >
+                    Zone {zoneDetails?.name} <MdArrowForwardIos size={16} />
+                    </NavLink>
 
+                </div>
                 <div
-                    className="group flex flex-col gap-4 items-start w-full h-[40vh] p-5 bg-cover bg-center rounded-t-xl"
+                    className="group mt-5 flex flex-col gap-4 items-start w-full h-[40vh] p-5 bg-cover bg-center rounded-t-xl"
                     style={{
                         backgroundImage: `linear-gradient(to left, rgba(0, 0, 0, 0),rgba(0, 0, 0, 0), #0e0b21), url(${`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${zoneDetails?.imgUrl}`})`
                     }}
@@ -299,7 +327,7 @@ const ZonesDetailsManager = () => {
                 </div>
 
 
-                <div className='relative pl-15 items-end gap-3 flex flex-row'>
+                <div className='relative lg:pl-15 px-3 items-end gap-3 flex flex-row'>
 
                     <div className=' absolute border-4 bg-white border-jci-white rounded-2xl -top-15'>
 
@@ -307,7 +335,7 @@ const ZonesDetailsManager = () => {
                             <div className="relative">
                                 <img
                                     src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${zonePsd?.imgUrl}`}
-                                    alt="President Zone"
+                                    alt="Vice President Zone"
                                     className="aspect-[50/50] w-30 rounded-xl object-cover"
                                     loading="lazy"
                                 />
@@ -340,7 +368,7 @@ const ZonesDetailsManager = () => {
                                 onClick={openAddModal}
                                 className="aspect-[50/50]  w-30 rounded-xl bg-gray-100 border-2 border-dashed border-gray-400 hover:border-green-500 flex items-center justify-center cursor-pointer hover:bg-jci-green/10 transition-colors duration-200"
                             >
-                                <IoAdd
+                                <IoImages
                                     size={32}
                                     className="hover:text-green-500 text-gray-400"
                                 />
@@ -351,23 +379,21 @@ const ZonesDetailsManager = () => {
                     </div>
 
 
-                    <div className='flex flex-col gap-1 items-start ml-38'>
+                    <div className='flex flex-col gap-1 items-start lg:ml-38 lg:mt-0 mt-20'>
 
                         <h1 className='text-[16px] font-poppins font-normal text-jci-black mt-2'>
                             {zonePsd
                                 ? zonePsd?.name
-                                : "Pas encore de président"}
+                                : "Pas encore de vice président"}
                         </h1>
 
                         <p className='text-jci-black/50 text-[12px]'>
-                            {zonePsd
-                                ? zonePsd?.quote
-                                : "Pas encore de président"}
+                            {zonePsd &&     zonePsd?.quote}
                         </p>
                         <p className='text-jci-black/50 text-[12px]'>
                             {zonePsd
-                                ? <><span className="font-medium text-jci-black">Contact: </span>{zonePsd?.contact}</>
-                                : "Pas encore de président"}
+                                &&<><span className="font-medium text-jci-black">Contact: </span>{zonePsd?.contact}</>
+                            }
                         </p>
 
                     </div>
@@ -469,7 +495,7 @@ const ZonesDetailsManager = () => {
 
                                     <label
                                         htmlFor="image"
-                                        className={`flex items-center justify-center px-4 py-8 border-2 border-dashed rounded-lg cursor-pointer text-sm ${
+                                        className={`flex flex-col items-center justify-center px-4 py-8 border-2 border-dashed rounded-lg cursor-pointer text-sm ${
                                             psdForm.watch("image")
                                                 ? "border-green-500"
                                                 : "border-gray-300 hover:border-jci-yellow"
@@ -477,6 +503,11 @@ const ZonesDetailsManager = () => {
                                     >
                                         {psdForm.watch("image")?.[0]?.name ||
                                             "Choisir une image"}
+                                        {psdForm.watch("image")?.[0] && (
+                                        <span className="text-[11px] text-gray-400 mt-1">
+                                            {(psdForm.watch("image")?.[0].size / 1024 / 1024).toFixed(2)} MB
+                                        </span>
+                                    )}
                                     </label>
 
                                     <input
@@ -484,19 +515,39 @@ const ZonesDetailsManager = () => {
                                         type="file"
                                         accept="image/*"
                                         {...psdForm.register("image", {
-                                            required: isEdit ? false : "L'image est obligatoire"
+                                            required: isEdit ? false : "L'image est obligatoire",
+                                            validate: {
+                                                validType: (files) => {
+                                                const file = files?.[0];
+
+                                                if (!file) return true;
+
+                                                return (
+                                                    ["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
+                                                    "Formats acceptés : JPG, PNG ou WebP."
+                                                );
+                                                },
+
+                                                validSize: (files) => {
+                                                const file = files?.[0];
+
+                                                if (!file) return true;
+
+                                                return (
+                                                    file.size <= 5 * 1024 * 1024 ||
+                                                    "L'image ne doit pas dépasser 5 Mo."
+                                                );
+                                                },
+                                            },
                                         })}
                                         className="hidden"
                                     />
-
                                     {psdForm.formState.errors.image && (
                                         <span className="text-red-500 text-sm">
                                             {psdForm.formState.errors.image.message}
                                         </span>
                                     )}
-
                                 </div>
-
 
                                 {/* NOM */}
 
@@ -514,8 +565,19 @@ const ZonesDetailsManager = () => {
                                         type="text"
                                         placeholder="Nom du président"
                                         {...psdForm.register("name", {
-                                            required: "Le nom est obligatoire"
-                                        })}
+                                            required: "Le nom est obligatoire",
+                                             minLength: {
+                                                value: 2,
+                                                message: "Le nom doit contenir au moins 2 caractères",
+                                            },
+                                            maxLength: {
+                                                value: 100,
+                                                message: "Le nom ne doit pas dépasser 100 caractères",
+                                            },
+                                            pattern: {
+                                                value: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/,
+                                                message: "Le nom contient des caractères invalides",
+                                            } })}
                                         className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow"
                                     />
 
@@ -542,9 +604,22 @@ const ZonesDetailsManager = () => {
                                     <textarea
                                         id="quote"
                                         placeholder="Mots de présentation du président"
-                                        {...psdForm.register("quote")}
+                                        {...psdForm.register("quote",{required: "La citation est obligatoire",
+                                            minLength: {
+                                                value: 5,
+                                                message: "La citation doit contenir au moins 5 caractères",
+                                            },
+                                            maxLength: {
+                                                value: 500,
+                                                message: "La citation ne doit pas dépasser 500 caractères",
+                                        }})}
                                         className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow"
                                     />
+                                    {psdForm.formState.errors.quote && (
+                                        <span className="text-red-500 text-sm">
+                                            {psdForm.formState.errors.quote.message}
+                                        </span>
+                                    )}
 
                                 </div>
 
@@ -563,10 +638,29 @@ const ZonesDetailsManager = () => {
                                     <input
                                         id="contact"
                                         type="text"
-                                        placeholder="Contact"
-                                        {...psdForm.register("contact")}
+                                        placeholder="0340000000 ou +261340000000"
+                                        {...psdForm.register("contact",{
+                                            required: "Le numéro de téléphone est obligatoire",
+                                            pattern: {
+                                                value: /^\+?[0-9\s()-]{8,20}$/,
+                                                message: "Veuillez fournir un numéro de téléphone valide e.g: 0340000000 ou +261340000000",
+                                            },
+                                            minLength: {
+                                                value: 10,
+                                                message: "Le numéro de téléphone doit contenir au moins 10 caractères",
+                                            },
+                                            maxLength: {
+                                                value: 13,
+                                                message: "Le numéro de téléphone ne doit pas dépasser 13 caractères",
+                                            },
+                                        })}
                                         className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow"
                                     />
+                                    {psdForm.formState.errors.contact && (
+                                        <span className="text-red-500 text-sm">
+                                            {psdForm.formState.errors.contact.message}
+                                        </span>
+                                    )}
 
                                 </div>
 
@@ -625,8 +719,11 @@ const ZonesDetailsManager = () => {
                             >
 
                                 {/* LOGO */}
+                                <div className="flex flex-row gap-1.5">
 
-                                <div className="flex flex-col gap-1.5">
+                               
+
+                                <div className="flex flex-1 flex-col gap-1.5">
 
                                     <label className="text-[13px] font-medium text-jci-black/80">
                                         Logo
@@ -634,10 +731,22 @@ const ZonesDetailsManager = () => {
 
                                     <label
                                         htmlFor="logoImg"
-                                        className="flex items-center justify-center px-4 py-6 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer text-sm hover:border-jci-yellow"
-                                    >
+                                        className={`flex flex-col items-center text-center w-50 h-30 truncate justify-center text-[11px] px-4 py-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer text-sm font-poppins text-gray-800 ${
+                                                    olForm.watch("logoImg")?.[0]
+                                                    ? 'border-green-500 hover:border-green-500'
+                                                    : 'hover:border-jci-yellow'
+                                                }`}                                    >
+                                        <IoImages
+                                            size={30}
+                                            className="mb-2 text-gray-400"
+                                        />
                                         {olForm.watch("logoImg")?.[0]?.name ||
-                                            "Choisir le logo"}
+                                            "Choisir le logo pour l'OL"}
+                                        {olForm.watch("logoImg")?.[0] && (
+                                            <span className="text-[11px] text-gray-400">
+                                                {(olForm.watch("logoImg")?.[0]?.size / 1024 / 1024).toFixed(2)} MB
+                                            </span>
+                                        )}
                                     </label>
 
                                     <input
@@ -648,7 +757,30 @@ const ZonesDetailsManager = () => {
                                             required: isOlEdit
                                                 ? false
                                                 : "Le logo est obligatoire"
-                                        })}
+                                        , validate: {
+                                            validType: (files) => {
+                                            const file = files?.[0];
+
+                                            if (!file) return true;
+
+                                            return (
+                                                ["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
+                                                "Formats acceptés : JPG, PNG ou WebP."
+                                            );
+                                            },
+
+                                            validSize: (files) => {
+                                            const file = files?.[0];
+
+                                            if (!file) return true;
+
+                                            return (
+                                                file.size <= 5 * 1024 * 1024 ||
+                                                "L'image ne doit pas dépasser 5 Mo."
+                                            );
+                                            },
+                                        },
+                                    })}
                                         className="hidden"
                                     />
 
@@ -663,7 +795,7 @@ const ZonesDetailsManager = () => {
 
                                 {/* IMAGE CARTE */}
 
-                                <div className="flex flex-col gap-1.5">
+                                <div className="flex flex-1 flex-col gap-1.5">
 
                                     <label className="text-[13px] font-medium text-jci-black/80">
                                         Image de localisation
@@ -671,10 +803,22 @@ const ZonesDetailsManager = () => {
 
                                     <label
                                         htmlFor="mapImg"
-                                        className="flex items-center justify-center px-4 py-6 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer text-sm hover:border-jci-yellow"
-                                    >
+                                        className={`flex flex-col items-center text-center w-50 h-30 truncate justify-center text-[11px] px-4 py-8 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer text-sm font-poppins text-gray-800 ${
+                                                            olForm.watch("mapImg")?.[0]
+                                                            ? 'border-green-500 hover:border-green-500'
+                                                            : 'hover:border-jci-yellow'
+                                                        }`}                                    >
+                                        <IoImages
+                                            size={30}
+                                            className="mb-2 text-gray-400"
+                                        />
                                         {olForm.watch("mapImg")?.[0]?.name ||
-                                            "Choisir une image"}
+                                            "Choisir une image de localisation "}
+                                            {olForm.watch("mapImg")?.[0] && (
+                                            <span className="text-[11px] text-gray-400">
+                                                {(olForm.watch("mapImg")?.[0]?.size / 1024 / 1024).toFixed(2)} MB
+                                            </span>
+                                        )}
                                     </label>
 
                                     <input
@@ -684,8 +828,32 @@ const ZonesDetailsManager = () => {
                                         {...olForm.register("mapImg", {
                                             required: isOlEdit
                                                 ? false
-                                                : "L'image de localisation est obligatoire"
-                                        })}
+                                                : "L'image de localisation est obligatoire",
+                                                validate: {
+                                                    validType: (files) => {
+                                                    const file = files?.[0];
+
+                                                    if (!file) return true;
+
+                                                    return (
+                                                        ["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
+                                                        "Formats acceptés : JPG, PNG ou WebP."
+                                                    );
+                                                    },
+
+                                                    validSize: (files) => {
+                                                    const file = files?.[0];
+
+                                                    if (!file) return true;
+
+                                                    return (
+                                                        file.size <= 5 * 1024 * 1024 ||
+                                                        "L'image ne doit pas dépasser 5 Mo."
+                                                    );
+                                                    },
+                                                },
+                                                })}
+                                       
                                         className="hidden"
                                     />
 
@@ -696,6 +864,7 @@ const ZonesDetailsManager = () => {
                                     )}
 
                                 </div>
+                                 </div>
 
 
                                 {/* NOM */}
@@ -704,7 +873,19 @@ const ZonesDetailsManager = () => {
                                     type="text"
                                     placeholder="Nom de l'OL"
                                     {...olForm.register("name", {
-                                        required: "Le nom est obligatoire"
+                                        required: "Le nom est obligatoire",
+                                        minLength: {
+                                        value: 2,
+                                        message: "Le nom doit contenir au moins 2 caractères",
+                                        },
+                                        maxLength: {
+                                        value: 100,
+                                        message: "Le nom ne doit pas dépasser 100 caractères",
+                                        },
+                                        pattern: {
+                                        value: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/,
+                                        message: "Le nom contient des caractères invalides",
+                                        }
                                     })}
                                     className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow"
                                 />
@@ -722,23 +903,56 @@ const ZonesDetailsManager = () => {
                                     type="text"
                                     placeholder="Localisation"
                                     {...olForm.register("localisation", {
-                                        required: "La localisation est obligatoire"
+                                        required: "La localisation est obligatoire",
+                                            minLength: {
+                                        value: 2,
+                                        message: "La localisation doit contenir au moins 2 caractères",
+                                        },
+                                        maxLength: {
+                                        value: 100,
+                                        message: "La localisation ne doit pas dépasser 100 caractères",
+                                        },
+                                        pattern: {
+                                        value: /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/,
+                                        message: "La localisation contient des caractères invalides",
+                                        }
                                     })}
                                     className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow"
                                 />
+                                {olForm.formState.errors.localisation && (
+                                    <span className="text-red-500 text-sm">
+                                        {olForm.formState.errors.localisation.message}
+                                    </span>
+                                )}
 
 
                                 {/* TELEPHONE */}
 
                                 <input
                                     type="text"
-                                    placeholder="Téléphone"
+                                    placeholder="0340000000 ou +261340000000"
                                     {...olForm.register("phone", {
-                                        required: "Le téléphone est obligatoire"
+                                       required: "Le numéro de téléphone est obligatoire",
+                                        pattern: {
+                                            value: /^\+?[0-9\s()-]{8,20}$/,
+                                            message: "Veuillez fournir un numéro de téléphone valide e.g: 0340000000 ou +261340000000",
+                                        },
+                                        minLength: {
+                                            value: 10,
+                                            message: "Le numéro de téléphone doit contenir au moins 10 caractères",
+                                        },
+                                        maxLength: {
+                                            value: 13,
+                                            message: "Le numéro de téléphone ne doit pas dépasser 13 caractères",
+                                        },
                                     })}
                                     className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow"
                                 />
-
+                                {olForm.formState.errors.phone && (
+                                    <span className="text-red-500 text-sm">
+                                        {olForm.formState.errors.phone.message}
+                                    </span>
+                                )}
 
                                 {/* EMAIL */}
 
@@ -746,10 +960,23 @@ const ZonesDetailsManager = () => {
                                     type="email"
                                     placeholder="Email"
                                     {...olForm.register("email", {
-                                        required: "L'email est obligatoire"
+                                        required: "L'email est obligatoire",
+                                        pattern: {
+                                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                        message: "Adresse email invalide",
+                                        },
+                                        maxLength: {
+                                        value: 254,
+                                        message: "L'email est trop long",
+                                        }
                                     })}
                                     className="px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow"
                                 />
+                                {olForm.formState.errors.email && (
+                                    <span className="text-red-500 text-sm">
+                                        {olForm.formState.errors.email.message}
+                                    </span>
+                                )}
 
 
                                 <button
@@ -819,10 +1046,10 @@ const ZonesDetailsManager = () => {
 
             </div>
             {/*Ol Interface */}
-            <div className="w-[90%] flex flex-col gap-5 mt-10">
+            <div className="md:w-[90%] w-full flex flex-col gap-5 md:mt-10 mt-2 ">
 
                 {/* HEADER */}
-            <div className="flex items-center justify-between gap-5">
+            <div className="flex md:flex-row  flex-col md:items-center items-start justify-between gap-5">
 
                 <div>
                     <h2 className="text-lg font-bold text-jci-black">
@@ -834,13 +1061,13 @@ const ZonesDetailsManager = () => {
                     </p>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex md:flex-row  flex-col items-center gap-3 w-full">
 
 
                     <button
                         type="button"
                         onClick={openAddOlModal}
-                        className="flex items-center gap-2 px-4 py-2.5 bg-jci-yellow text-jci-white rounded-lg text-sm font-semibold hover:bg-jci-white hover:text-jci-black border border-jci-yellow transition-colors duration-300 cursor-pointer"
+                        className='px-5 w-full md:w-fit py-2.5 bg-blue-100 rounded-lg text-blue-500 font-semibold text-sm  hover:bg-jci-white border border-blue-100 cursor-pointer transition-colors duration-300 flex items-center gap-2'
                     >
                         <IoAdd size={20} />
                         Ajouter une Organisation locale
@@ -850,7 +1077,7 @@ const ZonesDetailsManager = () => {
                         value={searchOl}
                         onChange={(e) => setSearchOl(e.target.value)}
                         placeholder="Rechercher une Organisation locale..."
-                        className="w-64 px-4 py-2.5 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow"
+                        className="md:w-64 w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow"
                     />
 
                 </div>
@@ -878,7 +1105,7 @@ const ZonesDetailsManager = () => {
                                     <img
                                         src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${ol.mapImgUrl}`}
                                         alt={ol.name}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-contain bg-jci-black"
                                         loading="lazy"
                                     />
 
@@ -889,7 +1116,7 @@ const ZonesDetailsManager = () => {
                                         <img
                                             src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${ol.logoImgUrl}`}
                                             alt={`Logo ${ol.name}`}
-                                            className="w-14 h-14 rounded-lg object-cover bg-white border-2 border-white"
+                                            className="w-14 h-14 rounded-lg object-contain  bg-jci-black border-2 border-white"
                                             loading="lazy"
                                         />
 
@@ -948,25 +1175,25 @@ const ZonesDetailsManager = () => {
                                              <button
                                             type="button"
                                             onClick={() => openEditOlModal(ol)}
-                                            className="p-2 rounded-full text-jci-teal bg-gray-50 hover:bg-jci-teal hover:text-jci-white cursor-pointer transition-colors duration-200"
+                                            className='px-3 py-1.5 bg-blue-100 rounded-lg text-blue-500 font-semibold text-[12px]  hover:bg-jci-white hover:border-blue-100 border border-transparent cursor-pointer transition-colors duration-300'
                                             title="Modifier"
                                         >
-                                            <FaPen size={14} />
+                                            Modifier
                                         </button>
 
                                         <button
                                             type="button"
                                             onClick={() => openDeleteOlModal(ol.id)}
-                                            className="p-2 rounded-full text-red-500 bg-gray-50 hover:bg-red-500 hover:text-white cursor-pointer transition-colors duration-200"
+                                            className='px-3 py-1.5 bg-red-100 rounded-lg text-red-500 font-semibold text-[12px]  hover:bg-jci-white hover:border-red-100 border border-transparent cursor-pointer transition-colors duration-300'
                                             title="Supprimer"
                                         >
-                                            <FaRegTrashCan size={14} />
+                                            Supprimer
                                         </button>
                                         </div>
                                         <div className="flex gap-2 justify-end">
                                             <button
-                                            className=' flex flex-row iterms-center gap-2 px-3 py-1.5 bg-jci-green rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white hover:border-green-600 border border-transparent cursor-pointer transition-colors duration-300'
-                                            onClick={() => window.location.href = `/admin/zones/organisations-locale/${zone}/${ol.id}`}
+                                              className=' flex flex-row iterms-center gap-2 px-3 py-1.5  rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white hover:border-gray-600 border border-transparent cursor-pointer transition-colors duration-300'
+                                            onClick={() => window.location.href = `/admin/zones/${zone}/organisations-locale/${ol.id}`}
                                             >
                                             Voir <LuExternalLink size={16}/>
                                 

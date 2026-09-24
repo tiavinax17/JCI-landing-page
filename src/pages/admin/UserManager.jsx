@@ -2,12 +2,13 @@ import {useEffect, useState, useContext } from 'react'
 import { UserContext } from '../../context/UserContext';
 import { usersAPI, organisationLocalesAPI } from '../../services/api';
 import {useForm} from 'react-hook-form';
-import { IoClose , IoAdd } from "react-icons/io5";
-
+import { IoClose , IoAdd, IoImages } from "react-icons/io5";
+import { toast } from "sonner";
 
 
 const UserManager = () => {
   const {user} = useContext(UserContext);
+  const userEmail = user?.email;
   const [pendingAction, setPendingAction] = useState(null);
   const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState(null);
@@ -65,10 +66,11 @@ const UserManager = () => {
       } else {
         await usersAPI.create(payload);
       }
+       toast.success("Compte utilisateur " + (userId ? "mis à jour" : "créé") + " avec succès");
       const res = await usersAPI.getAll();
       setUsers(res.data);
     } catch (error) {
-      console.log(error.response?.data?.message || "Une erreur est survenue");
+      toast.error(error.response?.data?.message || "Une erreur est survenue");
     } finally {
       setIsPending(false);
     }
@@ -81,9 +83,10 @@ const UserManager = () => {
     try {
       await usersAPI.deleteById(deleteId);
       const res = await usersAPI.getAll();
+      toast.success("Compte utilisateur supprimé avec succès");
       setUsers(res.data);
     } catch (error) {
-      console.log(error.response?.data?.message || "Suppression impossible");
+      toast.error(error.response?.data?.message || "Suppression impossible");
     } finally {
       setIsPending(false);
       setDeleteId(null);
@@ -101,10 +104,11 @@ const UserManager = () => {
       });
 
       setPasswordUserId(null);
+      toast.success("Mot de passe réinitialisé avec succès");
       userForm.reset({ password: '' });
 
     } catch (error) {
-      console.log(
+      toast.error(
         error.response?.data?.message || "Impossible de réinitialiser le mot de passe"
       );
     } finally {
@@ -147,15 +151,23 @@ const UserManager = () => {
     return emailMatch && roleMatch;
   });
   return (
-    <div className=' relative p-10 flex flex-col items-start gap-5 bg-gray-100 w-full'>
+    <div className=' relative p-10 flex flex-col items-start gap-5 bg-gray-100 w-full min-h-screen md:pt-0 pt-20 '>
+      <h1 className='text-4xl font-bold text-jci-black'>Gestion des comptes utilisateurs</h1>
       <button
-        className='px-5 py-2.5 bg-jci-yellow rounded-lg text-jci-white font-semibold text-sm hover:text-jci-black hover:bg-jci-white border border-jci-yellow cursor-pointer transition-colors duration-300 flex items-center gap-2'
+        className='px-5 py-2.5 bg-blue-100 rounded-lg text-blue-500 font-semibold text-sm  hover:bg-jci-white border border-blue-100 cursor-pointer transition-colors duration-300 flex items-center gap-2'
         onClick={() => {openAddModal()}}
       >
         <IoAdd size={16} />
         Ajouter un utilisateur
       </button>
-      {/* Loading indicator */}
+        <a
+          href="https://www.lastpass.com/features/password-generator"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-jci-blue underline hover:opacity-80"
+        >
+          Suggestion : utilisez Password Generator - LastPass pour générer un mot de passe sécurisé.
+        </a>      {/* Loading indicator */}
       {isPending && (
         <div className='absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white/60 backdrop-blur-sm z-10'>
           <div className='w-8 h-8 border-4 border-jci-yellow border-t-transparent rounded-full animate-spin' />
@@ -169,7 +181,7 @@ const UserManager = () => {
 
       {isDeleteOpen && (
       <div
-        className='absolute top-0 left-0 w-full h-full bg-jci-black/30 flex items-center justify-center z-20'
+        className='fixed top-0 left-0 w-full h-full bg-jci-black/30 flex items-center justify-center z-20'
         onClick={(e) => {
           if (e.target === e.currentTarget) {
             setIsDeleteOpen(false);
@@ -253,14 +265,24 @@ const UserManager = () => {
               >
                 Nouveau mot de passe
               </label>
-
+              <p className='text-[11px] text-jci-black/60'>* Minimum 12 caractères, incluant une majuscule, une minuscule, un chiffre et un caractère spécial</p>
               <input
                 id='newPassword'
                 type='password'
                 placeholder='Nouveau mot de passe'
                 {...userForm.register('password', {
                   required: 'Le mot de passe est obligatoire'
-                })}
+                ,
+                  minLength: {
+                  value: 12,
+                  message: "Le mot de passe doit contenir au moins 12 caractères",
+                  },
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{12,}$/,
+                    message:
+                      "Le mot de passe doit contenir une majuscule, une minuscule, un chiffre et un caractère spécial. Exemple: JciMadagascar@2026",
+                  },
+                 })}
                 className='px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow transition-colors duration-200'
               />
 
@@ -284,7 +306,7 @@ const UserManager = () => {
     )}
      {/* Modal for adding a user   */}
       {isOpen && (
-        <div className='absolute top-0 left-0 w-full h-full bg-jci-black/30 bg-opacity-50 flex items-center justify-center'
+        <div className='fixed top-0 left-0 w-full h-full bg-jci-black/30 bg-opacity-50 flex items-center justify-center'
          onClick={(e) => {
           if (e.target === e.currentTarget) {
             setIsOpen(false);
@@ -317,7 +339,18 @@ const UserManager = () => {
                 id="email"
                 type="email"
                 placeholder="example@email.com"
-                {...userForm.register('email', { required: 'L\'email est obligatoire' })}
+                {...userForm.register("email", {
+                  required: "L'email est obligatoire",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Adresse email invalide",
+                  },
+                  maxLength: {
+                    value: 254,
+                    message: "Email trop long",
+                  },
+                })}
+
                 className='px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow transition-colors duration-200'
               />
               {userForm.formState.errors.email && (
@@ -332,11 +365,23 @@ const UserManager = () => {
               <label className='text-[13px] font-medium text-jci-black/80' htmlFor="password">
                 Mot de passe 
               </label>
+              <p className='text-[11px] text-jci-black/60'>* Minimum 12 caractères, incluant une majuscule, une minuscule, un chiffre et un caractère spécial</p>
               <input
                 type="password"
                 id="password"
                 placeholder="Mot de passe"
-                {...userForm.register('password', { required: !userId ? 'Le mot de passe est obligatoire' : false })}
+                {...userForm.register('password', { 
+                  required: !userId ? 'Le mot de passe est obligatoire' : false,
+                  minLength: {
+                  value: 12,
+                  message: "Le mot de passe doit contenir au moins 12 caractères",
+                  },
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{12,}$/,
+                    message:
+                      "Le mot de passe doit contenir une majuscule, une minuscule, un chiffre et un caractère spécial. Exemple: JciMadagascar@2026",
+                  },
+                 })}
                 className='px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow transition-colors duration-200'
               />
               {userForm.formState.errors.password && (
@@ -356,7 +401,7 @@ const UserManager = () => {
                 className='px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow transition-colors duration-200'
               >
                 <option value="">Selectionnez un rôle</option>
-                <option value="SUPER_ADMIN">Super Administrateur</option>
+                {superAdmin && <option value="SUPER_ADMIN">Super Administrateur</option>}
                 <option value="ADMIN_E_COMMERCE">Administrateur e-commerce</option>
                 <option value="ADMIN_NATIONAL">Administrateur national</option>
                 <option value="ADMIN_LOCAL">Administrateur local</option>
@@ -417,9 +462,10 @@ const UserManager = () => {
           <option value='ADMIN_LOCAL'>Administrateur local</option>
         </select>
       </div>
-      <div className='w-full overflow-x-auto rounded-xl border border-gray-200 shadow-sm'>
-        <table className='w-full border-collapse text-sm'>
-          <thead className='bg-jci-blue text-jci-white font-poppins font-semibold'>
+      <div className='w-full overflow-x-auto rounded border border-gray-200 shadow-sm'>
+        {filteredUsers && filteredUsers.length > 0 ? (
+          <table className='w-full border-collapse text-sm'>
+          <thead className={` ${user.role === 'SUPER_ADMIN' ? 'bg-red-900' : user.role === 'ADMIN_NATIONAL' ? 'bg-jci-black' : user.role === 'ADMIN_LOCAL' ? 'bg-green-900' : 'bg-yellow-900'} text-jci-white font-poppins font-semibold`}>
             <tr className='text-left'>
               <th className='px-4 py-3 text-left font-semibold text-[13px] uppercase tracking-wide whitespace-nowrap'>ID</th>
               <th className='px-4 py-3 text-left font-semibold text-[13px] uppercase tracking-wide whitespace-nowrap'>Email</th>
@@ -458,10 +504,10 @@ const UserManager = () => {
                   </span>
                 </td>
                 {/* <td className='px-4 py-3 text-left text-jci-black/40 tracking-widest'>************</td> */}
-                <td className='px-4 py-3 text-left text-jci-black/40 italic'>
-                  {user.organisationLocalId ? user.organisationLocal.name : <span >Pas d'OL</span>}
+                <td className='px-4 py-3 text-left text-jci-black '>
+                  {user.organisationLocalId ? user.organisationLocal.name : <span className='italic text-jci-black/40 ' >Pas d'OL</span>}
                 </td>
-                  {superAdmin && <td className='px-4 py-3 text-left text-jci-black/40 italic'>
+                  {superAdmin ? <td className='px-4 py-3 text-left text-jci-black/40 italic'>
                   {user.lastLogin
                       ? new Date(user.lastLogin).toLocaleString('fr-FR', {
                           dateStyle: 'short',
@@ -469,19 +515,27 @@ const UserManager = () => {
                         })
                       : <span>Jamais</span>
                     }
-                </td>}
+                </td> : <td></td>}
                  {superAdmin && (
-                 <td className='px-4 py-3'>
+                 <td className='px-1 py-3'>
                   <div className='flex items-center justify-center gap-2'>
-                    <button className='px-3 py-1.5 bg-jci-blue rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white border-jci-blue border cursor-pointer transition-colors duration-300'
+                    <button className='px-3 py-1.5 bg-blue-100 rounded-lg text-blue-500 font-semibold text-[12px]  hover:bg-jci-white hover:border-blue-100 border border-transparent cursor-pointer transition-colors duration-300'
                       onClick={() => openEditModal(user)}
                     >Modifier</button>
-                     <button className='px-3 py-1.5 bg-jci-yellow rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white border-jci-yellow border cursor-pointer transition-colors duration-300'
+                    <button className='px-2 py-1.5 bg-gray-100 rounded-lg text-black font-semibold text-[12px]  hover:bg-jci-white hover:border-gray-100 border border-transparent cursor-pointer transition-colors duration-300'
                       onClick={() => openResetPasswordModal(user.id)}
                     >Réinitialiser le mot de passe</button>
-                    <button className='px-3 py-1.5 bg-jci-red rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white hover:border-red-600 border border-transparent cursor-pointer transition-colors duration-300'
+                     {user.email != userEmail ? (
+                      <button 
+                      className='px-3 py-1.5 bg-red-100 rounded-lg text-red-500 font-semibold text-[12px]  hover:bg-jci-white hover:border-red-100 border border-transparent cursor-pointer transition-colors duration-300'
                       onClick={() => openDeleteModal(user.id)}
                     >Supprimer</button>
+                    ) : <button
+                      className='px-2 py-1.5  rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white  border border-transparent cursor-not-allowed transition-colors duration-300 opacity-50'
+                      disabled
+                    >
+                      Ton compte
+                    </button>}
                   </div>
                 </td>
                  )}
@@ -513,8 +567,8 @@ const UserManager = () => {
                   </span>
                 </td>
                 {/* <td className='px-4 py-3 text-left text-jci-black/40 tracking-widest'>************</td> */}
-                <td className='px-4 py-3 text-left text-jci-black/40 italic'>
-                  {user.organisationLocalId ? user.organisationLocal.name : <span >Pas d'OL</span>}
+                <td className='px-4 py-3 text-left text-jci-black '>
+                  {user.organisationLocalId ? user.organisationLocal.name : <span className='italic text-jci-black/40 ' >Pas d'OL</span>}
                 </td>
                 {superAdmin && <td className='px-4 py-3 text-left text-jci-black/40 italic '>
                   {user.lastLogin
@@ -525,23 +579,53 @@ const UserManager = () => {
                       : <span>Jamais</span>
                     }                
                   </td>}
-                <td className='px-4 py-3'>
-                  <div className='flex items-center justify-center gap-2'>
-                    <button className='px-3 py-1.5 bg-jci-blue rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white border-jci-blue border cursor-pointer transition-colors duration-300'
+                <td className='px-1 py-3'>
+                  <div className='flex items-start justify-start gap-2'>
+                    <button className='px-3 py-1.5 bg-blue-100 rounded-lg text-blue-500 font-semibold text-[12px]  hover:bg-jci-white hover:border-blue-100 border border-transparent cursor-pointer transition-colors duration-300'
                       onClick={() => openEditModal(user)}
                     >Modifier</button>
-                    <button className='px-3 py-1.5 bg-jci-yellow rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white border-jci-yellow border cursor-pointer transition-colors duration-300'
+                    <button className='px-2 py-1.5 bg-gray-100 rounded-lg text-black font-semibold text-[12px]  hover:bg-jci-white hover:border-gray-100 border border-transparent cursor-pointer transition-colors duration-300'
                       onClick={() => openResetPasswordModal(user.id)}
                     >Réinitialiser le mot de passe</button>
-                    <button className='px-3 py-1.5 bg-jci-red rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white hover:border-red-600 border border-transparent cursor-pointer transition-colors duration-300'
+                    {user.email != userEmail ? (
+                      <button 
+                      className='px-3 py-1.5 bg-red-100 rounded-lg text-red-500 font-semibold text-[12px]  hover:bg-jci-white hover:border-red-100 border border-transparent cursor-pointer transition-colors duration-300'
                       onClick={() => openDeleteModal(user.id)}
                     >Supprimer</button>
+                    ) : <button
+                      className='px-2 py-1.5 bg-jci-red rounded-lg text-jci-black font-semibold text-[12px] hover:text-jci-black hover:bg-jci-white  border border-transparent cursor-not-allowed transition-colors duration-300 opacity-50'
+                      disabled
+                    >
+                      Ton compte
+                    </button>}
                   </div>
                 </td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </table>)
+        :
+        <div className="w-full py-10 bg-gray-50 rounded-xl border border-dashed border-gray-300 flex flex-col items-center justify-center gap-3">
+          <div className="w-12 h-12  flex items-center justify-center">
+              <IoImages
+              size={24}
+              className="text-gray-400"
+              />
+          </div>
+
+          <p className="text-sm text-jci-black/50">
+              Aucun utilisateur pour le moment
+          </p>
+
+          <button
+              type="button"
+              onClick={openAddModal}
+              className="text-sm font-semibold text-jci-teal hover:underline cursor-pointer"
+          >
+              Ajouter un compte utilisateur
+          </button>
+
+        </div>}
       </div>
     </div>
   )

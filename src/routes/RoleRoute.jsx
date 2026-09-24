@@ -4,7 +4,14 @@ import { UserContext } from "../context/UserContext";
 
 const RoleRoute = ({ allowedRoles }) => {
   const { user, loading } = useContext(UserContext);
-  console.log("USER",user);
+  
+  console.log("ROLE CHECK:", {
+    user,
+    role: user?.role,
+    allowedRoles,
+    isAllowed: allowedRoles.includes(user?.role),
+  });
+  console.log("Allowed Roles:", allowedRoles);
 
   if (loading) {
     return <div>Chargement...</div>;
@@ -15,7 +22,7 @@ const RoleRoute = ({ allowedRoles }) => {
   }
 
   if (!allowedRoles.includes(user.role)) {
-    return <Navigate to={`/admin/unauthorized${user}`} replace />;
+    return <Navigate to={`/admin/unauthorized`} replace />;
   }
 
   return <Outlet />;

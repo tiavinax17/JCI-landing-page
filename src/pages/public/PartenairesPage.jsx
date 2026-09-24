@@ -16,6 +16,38 @@ import ISevenFond from "../../images/Partenariat/iSeven.png"
 
 // Données de démonstration en attendant le contenu officiel des partenaires
 const partners = [
+    { Name: "iSeven Studio", 
+    Content: `Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam 
+      Alexandrini nobilis mors repentina; cuius socrus cum misceri sibi generum, flagrans eius amore, non impetraret, ut 
+      ferebatur, per palatii pseudothyrum introducta, oblato pretioso reginae monili id adsecuta est, ut ad Honoratum tum 
+      comitem orientis formula missa letali omnino scelere nullo contactus idem Clematius nec hiscere nec loqui 
+      permissus occideretur.
+      Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam 
+      Alexandrini nobilis mors repentina; tum comitem orientis formula missa letali omnino scelere nullo contactus idem 
+      Clematius nec hiscere nec loqui permissus occideretur.` ,
+    Logo: ISevenLogo, 
+    ImageFond: ISevenFond ,
+    BGColor:"bg-[#FFFFFF]", 
+    LabelColor:"text-[#045F66]",
+    H1Color:"text-[#C1CA1D]",
+    ContentColor:"text-jci-black"
+  },
+    { Name: "Orange Madagascar", 
+    Content: `Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam 
+      Alexandrini nobilis mors repentina; cuius socrus cum misceri sibi generum, flagrans eius amore, non impetraret, ut 
+      ferebatur, per palatii pseudothyrum introducta, oblato pretioso reginae monili id adsecuta est, ut ad Honoratum tum 
+      comitem orientis formula missa letali omnino scelere nullo contactus idem Clematius nec hiscere nec loqui 
+      permissus occideretur.
+      Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam 
+      Alexandrini nobilis mors repentina; tum comitem orientis formula missa letali omnino scelere nullo contactus idem 
+      Clematius nec hiscere nec loqui permissus occideretur.` ,
+    Logo: OrangeLogo, 
+    ImageFond: OrangeFond ,
+    BGColor:"bg-[#FF6500]", 
+    LabelColor:"text-jci-white",
+    H1Color:"text-[#215E61]",
+    ContentColor:"text-jci-white"
+  },
   {
      Name: "Midi Madagascar", 
      Content: `Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam 
@@ -47,38 +79,6 @@ const partners = [
     BGColor:"bg-[#FFFFFF]", 
     LabelColor:"text-jci-teal",
     H1Color:"text-jci-teal",
-    ContentColor:"text-jci-black"
-  },
-  { Name: "Orange Madagascar", 
-    Content: `Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam 
-      Alexandrini nobilis mors repentina; cuius socrus cum misceri sibi generum, flagrans eius amore, non impetraret, ut 
-      ferebatur, per palatii pseudothyrum introducta, oblato pretioso reginae monili id adsecuta est, ut ad Honoratum tum 
-      comitem orientis formula missa letali omnino scelere nullo contactus idem Clematius nec hiscere nec loqui 
-      permissus occideretur.
-      Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam 
-      Alexandrini nobilis mors repentina; tum comitem orientis formula missa letali omnino scelere nullo contactus idem 
-      Clematius nec hiscere nec loqui permissus occideretur.` ,
-    Logo: OrangeLogo, 
-    ImageFond: OrangeFond ,
-    BGColor:"bg-[#FF6500]", 
-    LabelColor:"text-jci-white",
-    H1Color:"text-[#215E61]",
-    ContentColor:"text-jci-white"
-  },
-  { Name: "iSeven Studio", 
-    Content: `Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam 
-      Alexandrini nobilis mors repentina; cuius socrus cum misceri sibi generum, flagrans eius amore, non impetraret, ut 
-      ferebatur, per palatii pseudothyrum introducta, oblato pretioso reginae monili id adsecuta est, ut ad Honoratum tum 
-      comitem orientis formula missa letali omnino scelere nullo contactus idem Clematius nec hiscere nec loqui 
-      permissus occideretur.
-      Eminuit autem inter humilia supergressa iam impotentia fines mediocrium delictorum nefanda Clematii cuiusdam 
-      Alexandrini nobilis mors repentina; tum comitem orientis formula missa letali omnino scelere nullo contactus idem 
-      Clematius nec hiscere nec loqui permissus occideretur.` ,
-    Logo: ISevenLogo, 
-    ImageFond: ISevenFond ,
-    BGColor:"bg-[#FFFFFF]", 
-    LabelColor:"text-[#045F66]",
-    H1Color:"text-[#C1CA1D]",
     ContentColor:"text-jci-black"
   },
 ]

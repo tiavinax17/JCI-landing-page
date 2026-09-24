@@ -57,6 +57,23 @@ export const bnAPI = {
     // getAllById : (id) => api.get(`/bn/${id}`),
     deleteById : (id) => api.delete(`/bn/${id}`),
 }
+
+// Items API
+export const itemAPI = {
+    getAll: () => api.get("/items"),
+    create : (data) => api.post("/items", data, {
+    headers: {
+        "Content-Type": "multipart/form-data"
+    }
+    }),
+    update : (id, data) => api.put(`/items/${id}`, data, {
+    headers: {
+        "Content-Type": "multipart/form-data"
+    }
+    }),
+    // getAllById : (id) => api.get(`/items/${id}`),
+    deleteById : (id) => api.delete(`/items/${id}`),
+}
 //experiences API
 export const pastPresidentAPI = {
     getAll: () => api.get("/past-presidents"),
@@ -120,7 +137,7 @@ export const olAPI = {
     deleteById : (id) => api.delete(`/organisation-locales/${id}`),
 
 }
-// servicesDetails API
+// Organisation Locale (OL) Content API
 export const contentAPI = {
     create : (data) => api.post("/organisation-locales/contents", data),
     getAll : (id) => api.get(`/organisation-locales/contents/${id}`),
@@ -146,7 +163,15 @@ export const memberAPI = {
 //image Service details API
 export const eventAPI = {
     getAllByOl: (olId) => api.get(`/events/organisation-locales/${olId}`),
+    getAllActu: () => api.get(`/events/actu`),
+    getAllByNational: () => api.get(`/events/national`),
+    getAll : () => api.get(`/events`),
     create : (data) => api.post("/events", data, {
+    headers: {
+        "Content-Type": "multipart/form-data"
+    }
+    }),
+    createNational : (data) => api.post("/events/national", data, {
     headers: {
         "Content-Type": "multipart/form-data"
     }
@@ -157,16 +182,29 @@ export const eventAPI = {
     }
     }),
     delete : (id) => api.delete(`/events/${id}`),
+    getById: (id) => api.get(`/events/details/${id}`),
 }
-// //features API
-// export const featuresAPI = {
-//     create : (data) => api.post("/features", data),
-//     getAllById : (id) => api.get(`/features/${id}`),
-//     deleteById : (id) => api.delete(`/features/${id}`),
-// }
-// //engagement API
-// export const engagementAPI = {
-//     create : (data) => api.post("/engagements", data),
-//     getAllById : (id) => api.get(`/engagements/${id}`),
-//     deleteById : (id) => api.delete(`/engagements/${id}`),
-// }
+//features API
+export const eventFileAPI = {
+    create : (data) => api.post("/events/files", data, {
+    headers: {
+        "Content-Type": "multipart/form-data"
+    }
+    }),
+    getById : (id) => api.get(`/events/files/${id}`),
+    delete : (id) => api.delete(`/events/files/${id}`),
+}
+//engagement API
+export const eventImageAPI  = {
+    create : (data) => api.post("/events/images", data, {
+    headers: {
+        "Content-Type": "multipart/form-data"
+    }
+    }),
+    getAllById : (id) => api.get(`/events/images/${id}`),
+    deleteById : (id) => api.delete(`/events/images/${id}`),
+}
+
+export const emailAPI = {
+    send : (data) => api.post("/email/send", data),
+}

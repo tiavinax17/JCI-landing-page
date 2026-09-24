@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router';
 import { UserContext } from './context/UserContext';
 import { useState, useEffect } from 'react';
 import { authAPI } from './services/api';
-
+import { Toaster } from "sonner";
 
 import AppRoutes from './routes/index';
 
@@ -32,7 +32,8 @@ useEffect(()=>{
 
   return (
     <UserContext value={{user, setUser, loading}}>
-      <Router>        
+      <Router>
+        <Toaster position="bottom-right" richColors />        
         <AppRoutes />
       </Router>
     </UserContext>
