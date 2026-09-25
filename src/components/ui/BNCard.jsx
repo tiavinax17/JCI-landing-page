@@ -1,5 +1,6 @@
 import React from 'react'
 import { PiBagSimpleDuotone } from "react-icons/pi";
+{/** BNCard component */}
 const BNCard = ({ image, firstName, lastName, role }) => {
   return (
 <div className="w-full max-w-full min-w-0 p-3 pb-2 border border-gray-400/50 rounded-xl flex flex-col justify-between">    
