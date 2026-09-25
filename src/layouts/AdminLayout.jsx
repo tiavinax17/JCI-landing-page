@@ -11,7 +11,6 @@ const AdminLayout = () => {
       return (
         <div className='bg-jci-blue flex flex-col justify-center items-center h-screen text-[20px] text-jci-white gap-3 font-poppins'>
           <img src={AnimationLoading} alt="Loading..." className='h-50 w-auto' />
-          <p>Loading...</p>
         </div>
       )
     }

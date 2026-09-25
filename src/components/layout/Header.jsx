@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className='hidden  px-3 py-3 gap-2 border border-gray-600/20 bg-jci-black/40 backdrop-blur-xl rounded-xl lg:flex flex-row fixed absolute top-4 right-10 z-50 font-semibold'>
         <div className='flex flex-row items-center gap-1'>
-            <img src={flag == "fr"? France : Us} className="h-4 w-6"/>
+            <img src={flag == "fr"? France : Us}  alt="Country Flag" className="h-4 w-6"/>
             <select className='text-[10px] text-jci-white outline-none'
                 value={flag}
                 onChange={(e) => setFlag(e.target.value)}

@@ -2,17 +2,17 @@ import H1 from "../../components/ui/H1"
 import LabelTrait from "../../components/ui/LabelTrait"
 import PartnerBlock from "../../components/ui/PartnerBlock"
 
-import MidiMadagascarLogo from "../../images/LOGO-OTHER/logo_midi_madagasikara.png"
-import MidiMadagascarFond from "../../images/Partenariat/MidiMadagascar.png"
+import MidiMadagascarLogo from "../../images/LOGO-OTHER/logo_midi_madagasikara.webp"
+import MidiMadagascarFond from "../../images/Partenariat/MidiMadagascar.webp"
 
-import GroupeKentiaLogo from "../../images/LOGO-OTHER/Logo Koonspace.png"
-import GroupeKentiaFond from "../../images/Partenariat/Kentia.png"
+import GroupeKentiaLogo from "../../images/LOGO-OTHER/Logo Koonspace.webp"
+import GroupeKentiaFond from "../../images/Partenariat/Kentia.webp"
 
-import OrangeLogo from "../../images/LOGO-OTHER/OrangeLogo.png"
-import OrangeFond from "../../images/Partenariat/Orange.png" 
+import OrangeLogo from "../../images/LOGO-OTHER/OrangeLogo.webp"
+import OrangeFond from "../../images/Partenariat/Orange.webp" 
 
-import ISevenLogo from "../../images/LOGO-OTHER/I0SevenStudio.png"
-import ISevenFond from "../../images/Partenariat/iSeven.png"
+import ISevenLogo from "../../images/LOGO-OTHER/I0SevenStudio.webp"
+import ISevenFond from "../../images/Partenariat/iSeven.webp"
 
 // Données de démonstration en attendant le contenu officiel des partenaires
 const partners = [

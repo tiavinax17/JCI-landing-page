@@ -3,7 +3,7 @@ import LabelTraitSimple from "../../components/ui/LabelTraitSimple";
 import BNCard from "../../components/ui/BNCard";
 import { useState, useEffect } from "react";
 import { bnAPI } from "../../services/api.js";
-import { toast } from "sonner";
+
 
 const BureauNationalPage = () => {
   const [bnList, setBnList] = useState([]);
@@ -15,7 +15,6 @@ const BureauNationalPage = () => {
         setBnList(res.data);
       } catch (error) {
         console.error("Error fetching Bureau National list:", error);
-        toast.error("Error fetching Bureau National list");
       }
     };
 

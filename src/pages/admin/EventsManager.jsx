@@ -238,6 +238,7 @@ const EventsManager = () => {
                     {/* Image */}
                     <div className="relative w-full aspect-[278/222] shrink-0 overflow-hidden">
                       <img
+                        loading="lazy"
                         src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${event.imgUrl}`}
                         alt={event.Title}
                         className="w-full h-full object-cover"
@@ -569,8 +570,8 @@ const EventsManager = () => {
                         message: "La citation doit contenir au moins 5 caractères",
                       },
                       maxLength: {
-                        value: 500,
-                        message: "La citation ne doit pas dépasser 500 caractères",
+                        value: 1000,
+                        message: "La citation ne doit pas dépasser 1000 caractères",
                       },
                     })}
                   className="px-4 py-3 border border-gray-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow"

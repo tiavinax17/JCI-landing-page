@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../context/UserContext'
 import { NavLink, useNavigate } from 'react-router'
 
-import JCILogo from "../../images/JCI/JCI Madagascar/JCI_Madagascar_background_marine_blue_name_blue_logo-removebg-preview.png"
+import JCILogo from "../../images/JCI/JCI Madagascar/JCI_Madagascar_background_marine_blue_name_blue_logo-removebg-preview.webp"
 import { authAPI, olAPI } from '../../services/api'
 import { LogIn, Menu, X } from 'lucide-react'
 
@@ -126,6 +126,7 @@ const SidebarAdmin = () => {
                 <div className='flex flex-col gap-2'>
 
                     <img
+                        alt="JCI Madagascar Logo"
                         src={
                             user.role === 'ADMIN_LOCAL'
                                 ? `${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${monOl?.logoImgUrl}`
@@ -217,6 +218,7 @@ const SidebarAdmin = () => {
                     <div className='flex items-center gap-3'>
 
                         <img
+                            alt="JCI Madagascar Logo"
                             src={
                                 user.role === 'ADMIN_LOCAL'
                                     ? `${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${monOl?.logoImgUrl}`

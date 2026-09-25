@@ -14,6 +14,8 @@ const EventCard = ({ Img, Day, Month, Type, Title, Content, Year, Id }) => {
             src={Img}
             alt={Title}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
 
           {/* Date */}

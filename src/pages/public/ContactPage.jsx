@@ -8,7 +8,7 @@ const ContactPage = () => {
 
       {/* Header */}
       <div className='flex flex-col gap-2 items-start text-start mt-4 sm:mt-8 w-full'>
-        <h1 className='text-jci-black font-bold font-noto text-[22px] sm:text-[26px] lg:text-[30px] leading-tight'>
+        <h1 className='text-jci-black font-bold font-poppins text-[22px] sm:text-[26px] lg:text-[30px] leading-tight'>
           ENTRER EN <span className='text-jci-yellow'>CONTACT</span> OU DES QUESTIONS?
         </h1>
 

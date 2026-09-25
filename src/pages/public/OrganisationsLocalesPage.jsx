@@ -1,30 +1,21 @@
-import { Link } from 'react-router'
-import H1 from "../../components/ui/H1"
-import LabelTrait from "../../components/ui/LabelTrait"
 import ZoneFilterTabs from "../../components/layout/ZoneFilterTabs"
 import Mada from "../../images/MadaLocalOrg.png"
 import LabelTraitSimple from "../../components/ui/LabelTraitSimple"
-import JCIAmbilobe from "../../images/JCI/JCI Ambilobe/JCI Ambilobe background marine blue logo.png"
-import JCIAntananarivo from "../../images/JCI/JCI Antananarivo/JCI Antananarivo background blue logo.png"
-import JCIAntsiranana from "../../images/JCI/JCI Antsiaranana/JCI Antsiranana color.png"
-import JCIAntsohihy from "../../images/JCI/JCI Antsohihy/JCI Antsohihy background marine blue logo.png"
-import JCIFaradofay from "../../images/JCI/JCI Faradofay/JCI Faradofay background blue logo.png"
-import JCIIarivo from "../../images/JCI/JCI Iarivo/JCI Iarivo color logo.png"
-import JCIIlonIarivo from "../../images/JCI/JCI Ilon_Iarivo/JCI Ilon_Iarivo background marine blue logo.png"
-import JCIIvonea from "../../images/JCI/JCI Ivonea/JCI Ivonea color logo.png"
-import JCIMahajanga from "../../images/JCI/JCI Mahajanga/JCI Mahajanga background marine blue logo.png"
-import JCIMayendeleyo from "../../images/JCI/JCI Mayendeleyo/JCI Mayendeleyo background blue logo.png"
-import JCINosyBe from "../../images/JCI/JCI Nosy Be/JCI Nosy Be color logo.png"
-import JCISambava from "../../images/JCI/JCI Sambava/JCI Sambava background marine blue logo.png"
-import JCIToamasina from "../../images/JCI/JCI Toamasina/JCI Toamasina background blue logo.png"
-import JCIToliara from "../../images/JCI/JCI Toliara/JCI Toliara color logo.png"
+import JCIAmbilobe from "../../images/JCI/JCI Ambilobe/JCI Ambilobe background marine blue logo.webp"
+import JCIAntananarivo from "../../images/JCI/JCI Antananarivo/JCI Antananarivo background blue logo.webp"
+import JCIAntsiranana from "../../images/JCI/JCI Antsiaranana/JCI Antsiranana color.webp"
+import JCIAntsohihy from "../../images/JCI/JCI Antsohihy/JCI Antsohihy background marine blue logo.webp"
+import JCIFaradofay from "../../images/JCI/JCI Faradofay/JCI Faradofay background blue logo.webp"
+import JCIIarivo from "../../images/JCI/JCI Iarivo/JCI Iarivo color logo.webp"
+import JCIIlonIarivo from "../../images/JCI/JCI Ilon_Iarivo/JCI Ilon_Iarivo background marine blue logo.webp"
+import JCIIvonea from "../../images/JCI/JCI Ivonea/JCI Ivonea color logo.webp"
+import JCIMahajanga from "../../images/JCI/JCI Mahajanga/JCI Mahajanga background marine blue logo.webp"
+import JCIMayendeleyo from "../../images/JCI/JCI Mayendeleyo/JCI Mayendeleyo background blue logo.webp"
+import JCINosyBe from "../../images/JCI/JCI Nosy Be/JCI Nosy Be color logo.webp"
+import JCISambava from "../../images/JCI/JCI Sambava/JCI Sambava background marine blue logo.webp"
+import JCIToamasina from "../../images/JCI/JCI Toamasina/JCI Toamasina background blue logo.webp"
+import JCIToliara from "../../images/JCI/JCI Toliara/JCI Toliara color logo.webp"
 
-
-const zones = [
-  { label: "Zone Nord", path: "/organisations-locales/nord" },
-  { label: "Zone Centre", path: "/organisations-locales/centre" },
-  { label: "Zone Sud", path: "/organisations-locales/sud" },
-]
 const listeOl1 =[
   { name: "JCI Ambilobe", logo: JCIAmbilobe },
   { name: "JCI Antananarivo", logo: JCIAntananarivo },

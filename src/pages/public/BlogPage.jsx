@@ -7,6 +7,7 @@ import { eventAPI } from "../../services/api"
 const BlogPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [eventList, setEventList] = useState([])
+  const [totalPages, setTotalPages] = useState(1)
 
   const [dateFilter, setDateFilter] = useState("tous")
   const [typeFilter, setTypeFilter] = useState("tous")
@@ -17,6 +18,52 @@ const BlogPage = () => {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
 
+
+
+  // const TOTAL_PAGES =
+  //   Math.ceil(filteredEvents.length / PAGE_SIZE) || 1
+
+  // const events = filteredEvents.slice(
+  //   (currentPage - 1) * PAGE_SIZE,
+  //   currentPage * PAGE_SIZE
+  // )
+
+  // useEffect(() => {
+  //   const fetchEvents = async () => {
+  //     try {
+  //       const res = await eventAPI.getAll()
+  //       setEventList(res.data)
+  //     } catch (error) {
+  //       console.error("Failed to fetch events:", error)
+  //     }
+  //   }
+
+  //   fetchEvents()
+  // }, [])
+
+    useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await eventAPI.getAll({
+          page: currentPage,
+          limit: PAGE_SIZE
+        })
+
+        setEventList(res.data.events)
+        setTotalPages(res.data.totalPages)
+
+      } catch (error) {
+        console.error("Failed to fetch events:", error)
+      }
+    }
+
+    fetchEvents()
+  }, [currentPage])
+
+  // Revenir à la première page lorsqu'un filtre change
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [dateFilter, typeFilter])
   // Filtres
   const filteredEvents = eventList.filter((event) => {
     const eventDate = new Date(event.date)
@@ -31,33 +78,6 @@ const BlogPage = () => {
 
     return matchesDate && matchesType
   })
-
-  const TOTAL_PAGES =
-    Math.ceil(filteredEvents.length / PAGE_SIZE) || 1
-
-  const events = filteredEvents.slice(
-    (currentPage - 1) * PAGE_SIZE,
-    currentPage * PAGE_SIZE
-  )
-
-  useEffect(() => {
-    const fetchEvents = async () => {
-      try {
-        const res = await eventAPI.getAll()
-        setEventList(res.data)
-      } catch (error) {
-        console.error("Failed to fetch events:", error)
-      }
-    }
-
-    fetchEvents()
-  }, [])
-
-  // Revenir à la première page lorsqu'un filtre change
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [dateFilter, typeFilter])
-
   return (
     <div className='flex flex-col w-full min-h-screen bg-jci-black'>
 
@@ -65,12 +85,12 @@ const BlogPage = () => {
       <section className='relative bg-jci-blue px-6 md:px-8 lg:px-1 py-10 lg:py-0 flex flex-col items-center md:gap-10 lg:pl-100'>
 
         {/* Fond blanc */}
-        <div className='flex flex-col items-start justify-between py-15 px-6 lg:pl-7 lg:pr-0 gap-4 lg:gap-1 text-left lg:text-center bg-jci-white w-full h-auto lg:h-[200vh] md:-mr-2'>
+        <div className='flex flex-col items-start justify-between pt-15 pb-5 px-6 lg:pl-7 lg:pr-0 gap-4 lg:gap-1 text-left lg:text-center bg-jci-white w-full h-auto lg:h-[200vh] md:-mr-2'>
 
           <div className="flex flex-col items-start">
 
             <div className='flex flex-row items-center -mb-1'>
-              <p className='text-jci-blue text-[8px] font-bold font-noto'>
+              <p className='text-jci-blue text-[8px] font-bold font-poppins'>
                 ACTUALITÉS & ÉVÉNEMENTS
               </p>
 
@@ -135,7 +155,7 @@ const BlogPage = () => {
             <Pagination
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
-              totalPages={TOTAL_PAGES}
+              totalPages={totalPages}
             />
           </div>
 
@@ -148,11 +168,11 @@ const BlogPage = () => {
             name="text"
             className='hidden lg:block relative h-[400px] w-[60px] -ml-10 mr-5'
           >
-            <p className='absolute top-130 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[90px] font-bold text-jci-black/10 font-noto select-none'>
+            <p className='absolute top-130 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[90px] font-bold text-jci-black/10 font-poppins select-none'>
               Actualités & événements
             </p>
 
-            <p className='absolute top-1/2 left-15 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[25px] font-bold text-jci-white font-noto'>
+            <p className='absolute top-1/2 left-15 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[25px] font-bold text-jci-white font-poppins'>
               Actualités & événements
             </p>
           </div>
@@ -160,7 +180,7 @@ const BlogPage = () => {
           {/* DESKTOP */}
           <div className='hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-6 w-fit self-center lg:w-full max-w-6xl grid-cols-1'>
 
-            {events.map((event) => {
+            {filteredEvents?.map((event) => {
               const date = new Date(event.date)
 
               const day = date.getDate()
@@ -189,7 +209,7 @@ const BlogPage = () => {
           {/* MOBILE */}
           <div className='sm:hidden flex flex-row overflow-x-scroll snap-x snap-mandatory self-center lg:w-full max-w-6xl w-[90%]'>
 
-            {events.map((event) => {
+            {filteredEvents?.map((event) => {
               const date = new Date(event.date)
 
               const day = date.getDate()

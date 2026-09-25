@@ -5,8 +5,6 @@ const tabs = [
   { label: "NOS VALEURS", path: "/jci-madagascar/valeurs" },
   { label: "BUREAU NATIONAL 2026", path: "/jci-madagascar/bureau-national" },
   { label: "NOS PROGRAMMES", path: "/jci-madagascar/programmes" },
-  // { label: "JCI IN BUSINESS", path: "/jci-madagascar/valeurs" },
-  // { label: "JCI RISE", path: "/jci-madagascar/valeurs" },
   { label: "SÉNAT", path: "/jci-madagascar/senat" },
 ]
 

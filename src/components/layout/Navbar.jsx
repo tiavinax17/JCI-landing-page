@@ -5,9 +5,8 @@ import { LogIn, Menu, X } from "lucide-react"
 import { useState } from "react"
 import ButtonFull from './../ui/ButtonFull';
 import { ShoppingCart } from 'lucide-react';
-import JCILogo from "../../images/JCI/JCI Madagascar/JCI_Madagascar_background_marine_blue_name_blue_logo-removebg-preview.png" 
-import BuildLegacyLogo from "../../images/Charte Build Legacy Together/BLT Blanc/BLT-07.png"
-import QR from "../../images/QRWhite.svg"
+import JCILogo from "../../images/JCI/JCI Madagascar/JCI_Madagascar_background_marine_blue_name_blue_logo-removebg-preview.webp" 
+import BuildLegacyLogo from "../../images/Charte Build Legacy Together/BLT Blanc/BLT-07.webp"
 
 const navActiveClass = ({ isActive }) => isActive ? "text-jci-yellow scale-105 " : "text-jci-white hover:scale-105 transition-transform duration-300 hover:text-jci-yellow";
 
@@ -27,7 +26,7 @@ const Navbar = () => {
     <>
     <div className='hidden lg:flex fixed top-4 left-8 h-screen w-fit  px-1  rounded flex-col gap-2 z-50 justify-start '> 
         <NavLink to="/" className="bg-jci-black/50 backdrop-blur rounded-xl py-1 px-7 flex justify-center items-center border border-gray-600/20"> 
-            <img src={JCILogo} className='h-10 w-auto hover:scale-105 transition-transform duration-300'/> 
+            <img src={JCILogo} alt="JCI Madagascar Logo" className='h-10 w-auto hover:scale-105 transition-transform duration-300'/> 
         </NavLink>
         <div className='border border-gray-600/20 flex flex-col h-screen bg-jci-black/50 backdrop-blur rounded-xl py-7 px-2  mb-5 text-jci-white text-[12px] font-roboto font-bold items-center justify-between '> 
             
@@ -53,8 +52,8 @@ const Navbar = () => {
     {/* Navbar mobile : barre du haut avec logo + bouton menu, visible en dessous de lg */}
     <div className='lg:hidden fixed top-4 left-4 right-4 z-50 flex items-center justify-between rounded-xl px-4 py-2 border border-gray-600/20 bg-jci-black/40 backdrop-blur'>
        <div className="flex flex-row gap-1">
-            <img src={JCILogo} className='h-8 w-auto'/>
-            <img src={BuildLegacyLogo} className='h-8 w-auto ml-2'/>
+            <img src={JCILogo} alt="JCI Madagascar Logo" className='h-8 w-auto'/>
+            <img src={BuildLegacyLogo} alt="Build Legacy Together Logo" className='h-8 w-auto ml-2'/>
        </div>
         <div className="flex flex-row gap-1">
             {/* <div className='flex flex-row items-start gap-1  rounded  p-2'>

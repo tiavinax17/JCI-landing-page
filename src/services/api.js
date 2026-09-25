@@ -31,7 +31,6 @@ export const authAPI ={
 export const usersAPI = {
     create: (data) => api.post("/users", data),
     getAll: () => api.get("/users"),
-    // getBySlug: (slug) => api.get(`/jobs/${slug}`),
     update : (id, data) => api.put(`/users/${id}`,data),
     deleteById: (id) => api.delete(`/users/${id}`),
     updatePassword: (id, data) => api.put(`/users/${id}/password`, data),
@@ -165,7 +164,7 @@ export const eventAPI = {
     getAllByOl: (olId) => api.get(`/events/organisation-locales/${olId}`),
     getAllActu: () => api.get(`/events/actu`),
     getAllByNational: () => api.get(`/events/national`),
-    getAll : () => api.get(`/events`),
+    getAll : (params) => api.get(`/events`, { params }),
     create : (data) => api.post("/events", data, {
     headers: {
         "Content-Type": "multipart/form-data"

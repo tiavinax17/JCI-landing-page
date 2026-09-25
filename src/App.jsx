@@ -11,14 +11,13 @@ function App() {
   const [loading, setLoading] = useState(true);
 
 useEffect(()=>{
-  console.log("Fetching user...");
-  console.log("User=", user);
   const fetchUser = async () =>{
     try {
       const res = await authAPI.me();
       setUser(res.data);
       console.log(res.data)
-    } catch (error) {
+    } catch
+    {
       setUser(null);
     }
     finally{

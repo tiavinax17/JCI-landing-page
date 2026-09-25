@@ -545,6 +545,7 @@ const Ecommerce = () => {
                   <div className="w-15 h-15 rounded-lg overflow-hidden">
 
                     <img
+                      loading="lazy"
                       src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${item.imgUrl}`}
                       alt={item.name}
                       className="w-full h-full object-cover"

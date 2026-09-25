@@ -1049,7 +1049,7 @@ const ZonesDetailsManager = () => {
             <div className="md:w-[90%] w-full flex flex-col gap-5 md:mt-10 mt-2 ">
 
                 {/* HEADER */}
-            <div className="flex md:flex-row  flex-col md:items-center items-start justify-between gap-5">
+            <div className="flex flex-col  items-start justify-between gap-5">
 
                 <div>
                     <h2 className="text-lg font-bold text-jci-black">

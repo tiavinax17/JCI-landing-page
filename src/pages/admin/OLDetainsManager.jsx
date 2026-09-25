@@ -543,7 +543,9 @@ useEffect(() => {
                   </button>
                 </div>
                 <div className="overflow-hidden">
-                  <img src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${olDetails.logoImgUrl}`} alt={`Logo ${olDetails.name}`} className="w-full h-20 object-contain" />
+                  <img 
+                  loading="lazy"
+                  src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${olDetails.logoImgUrl}`} alt={`Logo ${olDetails.name}`} className="w-full h-20 object-contain" />
                 </div>
 
                 </div>
@@ -556,7 +558,7 @@ useEffect(() => {
             {/* HEADER */}
             <div className="hidden md:flex flex-col md:flex-row gap-5">
               <div className="flex flex-2 flex-col gap-4">
-                <div className="flex md:flex-row flex-col items-center justify-between ">
+                <div className="flex flex-col items-center md:items-start md:gap-2 justify-between ">
 
                     <div className="w-full ">
                         <h2 className="text-lg font-bold text-jci-black">
@@ -664,12 +666,16 @@ useEffect(() => {
 
               </div>
               <div className="flex-1">
-                <img src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${olDetails.mapImgUrl}`} alt={`Logo ${olDetails.name}`} className="w-full h-100 object-contain" />
+                <img 
+                loading="lazy"
+                src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${olDetails.mapImgUrl}`} alt={`Logo ${olDetails.name}`} className="w-full h-100 object-contain" />
               </div>
             </div>
             <div className="flex md:hidden flex-col md:flex-row gap-5">
             <div className="flex-1">
-                <img src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${olDetails.mapImgUrl}`} alt={`Logo ${olDetails.name}`} className="w-full h-50 object-contain" />
+                <img 
+                loading="lazy"
+                src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${olDetails.mapImgUrl}`} alt={`Logo ${olDetails.name}`} className="w-full h-50 object-contain" />
               </div>
               <div className="flex flex-2 flex-col gap-4">
                 <div className="flex md:flex-row flex-col items-center justify-between gap-5">
@@ -783,7 +789,7 @@ useEffect(() => {
           </div>
           <div className="w-full bg-white flex flex-col gap-5">
 
-          <div className="flex items-center md:flex-row flex-col gap-5 justify-between">
+          <div className="flex items-center md:items-start flex-col gap-5 justify-between">
             <div>
               <h2 className="text-lg font-bold text-jci-black">
                 Membres de l'organisation locale
@@ -876,6 +882,7 @@ useEffect(() => {
                         <div className="w-15 h-15 rounded-full overflow-hidden">
 
                           <img
+                            loading="lazy"
                             src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${item.imgUrl}`}
                             alt={item.name}
                             className="w-full h-full object-cover"
@@ -969,7 +976,7 @@ useEffect(() => {
           </div>
           <div className="w-full p-5 flex flex-col gap-5">
 
-            <div className="flex items-center flex-col md:flex-row justify-between gap-5">
+            <div className="flex items-center flex-col md:items-start justify-between gap-5">
 
               <div>
                 <h2 className="text-lg font-bold text-jci-black">
@@ -1042,6 +1049,7 @@ useEffect(() => {
                             src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${event.imgUrl}`}
                             alt={event.Title}
                             className="w-full h-full object-cover"
+                            loading="lazy"
                           />
 
                           {/* Date */}
@@ -2105,8 +2113,8 @@ useEffect(() => {
                       message: "La citation doit contenir au moins 5 caractères",
                     },
                     maxLength: {
-                      value: 500,
-                      message: "La citation ne doit pas dépasser 500 caractères",
+                      value: 1000,
+                      message: "La citation ne doit pas dépasser 1000 caractères",
                     },
                   })}
                 className="px-4 py-3 border border-gray-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow"

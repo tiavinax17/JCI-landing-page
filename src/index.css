@@ -162,23 +162,23 @@
    Variable Font
    ======================================== */
 
-@font-face {
+/* @font-face {
   font-family: "Noto Sans";
   src: url("./assets/fonts/NotoSans-VariableFont_wdth,wght.ttf")
     format("truetype");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-}
+} */
 
-@font-face {
+/* @font-face {
   font-family: "Noto Sans";
   src: url("./assets/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf")
     format("truetype");
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
-}
+} */
 
 /* ========================================
    Plus Jakarta Sans

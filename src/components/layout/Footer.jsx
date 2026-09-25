@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import JCILogo from "../../images/JCI/JCI Madagascar/JCI_Madagascar_background_marine_blue_name_blue_logo-removebg-preview.png"
+import JCILogo from "../../images/JCI/JCI Madagascar/JCI_Madagascar_background_marine_blue_name_blue_logo-removebg-preview.webp"
 import { IoLogoLinkedin, IoMail } from "react-icons/io5";
 import { IoMailOutline } from "react-icons/io5";
 import { RiInstagramFill, RiFacebookCircleFill } from "react-icons/ri";

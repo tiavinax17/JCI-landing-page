@@ -8,14 +8,14 @@ import Mada from "../../images/AccueilMada.svg"
 import Mada2 from "../../images/Mada2.svg"
 import BG from "../../images/HomeBG.png"
 import LogoJCIMNoBg from "../../images/JCI/JCI Madagascar/JCI Madagascar background marine blue name blue logo.png"
-import LogoBLTNoBgRow from "../../images/Charte Build Legacy Together/BLT Blanc/BLT-05.png"
-import LogoBLTNoBgRowWhite from "../../images/Charte Build Legacy Together/BLT Monochrome Blanc/BLT-11.png"
-import PSD2026 from "../../images/Photos corporate BN/DN2026.png"
-import MidiMadagascar from "../../images/LOGO-OTHER/logo_midi_madagasikara.png"
-import OrangeMadagascar from "../../images/LOGO-OTHER/OrangeLogo.png"
-import GroupeKentia from "../../images/LOGO-OTHER/Logo Kentia.png"
-import KoonSpace from "../../images/LOGO-OTHER/Logo Koonspace.png" 
-import ISeven from "../../images/LOGO-OTHER/I0SevenStudio.png"
+import LogoBLTNoBgRow from "../../images/Charte Build Legacy Together/BLT Blanc/BLT-05.webp"
+import LogoBLTNoBgRowWhite from "../../images/Charte Build Legacy Together/BLT Monochrome Blanc/BLT-11.webp"
+import PSD2026 from "../../images/Photos corporate BN/DN2026.webp"
+import MidiMadagascar from "../../images/LOGO-OTHER/logo_midi_madagasikara.webp"
+import OrangeMadagascar from "../../images/LOGO-OTHER/OrangeLogo.webp"
+import GroupeKentia from "../../images/LOGO-OTHER/Logo Kentia.webp"
+import KoonSpace from "../../images/LOGO-OTHER/Logo Koonspace.webp" 
+import ISeven from "../../images/LOGO-OTHER/I0SevenStudio.webp"
 import { IoArrowDownCircle } from "react-icons/io5";
 import { eventAPI } from "../../services/api"
 import { useState, useEffect } from "react";
@@ -139,7 +139,9 @@ const AcceuilPage = () => {
 
           {/* Colonne 2 : repère visuel des zones (placeholder de la carte de Madagascar) */}
           <div className='flex justify-center md:row-span-2 md:self-center -mt-25 lg:row-span-1 lg:self-start p-10 hover:scale-101  transition-all duration-300'>
-            <img src={Mada} alt="Carte des zones JCI Madagascar" />
+            <img src={Mada} alt="Carte des zones JCI Madagascar"
+            fetchPriority="high"
+            />
           </div>
 
           {/* Colonne 3 : valeurs + programmes */}
@@ -229,6 +231,7 @@ const AcceuilPage = () => {
                 <img
                   src={Mada}
                   alt="Carte des zones JCI Madagascar"
+                  fetchPriority="high"
                   className={`transition-all duration-500 ease-in-out h-[85%] ${
                     showSecondImage
                       ? "opacity-0 scale-95"
@@ -237,15 +240,13 @@ const AcceuilPage = () => {
                 />
 
                 {/* Deuxième image */}
-                <img
-                  src={Mada2}
-                  alt="Carte des zones JCI Madagascar"
-                  className={`absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-in-out ${
-                    showSecondImage
-                      ? "opacity-100 scale-100"
-                      : "opacity-0 scale-95"
-                  }`}
-                />
+                {showSecondImage && (
+                  <img
+                    src={Mada2}
+                    alt="Carte des zones JCI Madagascar"
+                    className="absolute inset-0 w-full h-full object-contain"
+                  />
+                )}
               </div>
                <div className="absolute top-10 left-0 w-32 h-14">
                 <img
@@ -403,6 +404,7 @@ const AcceuilPage = () => {
                   src={PSD2026}
                   alt="Manjatosoa Minah RAKOTOBE, Présidente Nationale"
                   className="h-20 w-20 rounded-full object-cover"
+                  loading="lazy"
                 />
 
                 {/* Bordure fixe + clignotement */}
@@ -493,7 +495,7 @@ const AcceuilPage = () => {
         <div className='flex flex-col items-center gap-0.5 text-center'>
           <div className='flex flex-row items-center'>
             <div className='mr-2 h-[0.5px] w-10  bg-jci-yellow'> </div>
-            <p className='text-jci-white text-[8px] font-medium font-noto'>ACTUALITÉS & ÉVÉNEMENTS</p>
+            <p className='text-jci-white text-[8px] font-medium font-poppins'>ACTUALITÉS & ÉVÉNEMENTS</p>
             <div className='ml-2 h-[0.5px] w-10  bg-jci-yellow'> </div>
           </div>
           <H1 TextColor="text-jci-white" TextSize="text-2xl">DÉCOUVREZ NOS PARTENAIRES</H1>
@@ -506,23 +508,23 @@ const AcceuilPage = () => {
           <div className="flex items-center gap-6 lg:gap-10 pr-6 lg:pr-10">
 
             <div className="flex items-center justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3 shrink-0">
-              <img src={MidiMadagascar} alt="" className="h-15 w-auto" />
+              <img src={MidiMadagascar} alt="Logo Midi Madagascar" loading="lazy" decoding="async"className="h-15 w-auto" />
             </div>
 
             <div className="flex items-start justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white pt-1 md:pt-5 shrink-0">
-              <img src={OrangeMadagascar} alt="" className="h-17 w-auto" />
+              <img src={OrangeMadagascar} alt="Logo Orange Madagascar" loading="lazy" decoding="async" className="h-17 w-auto" />
             </div>
 
             <div className="flex items-center justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3 shrink-0">
-              <img src={GroupeKentia} alt="" className="h-20 w-auto" />
+              <img src={GroupeKentia} alt="Logo Groupe Kentia" loading="lazy" decoding="async" className="h-20 w-auto" />
             </div>
 
             <div className="flex items-center justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3 shrink-0">
-              <img src={ISeven} alt="" className="h-15 w-auto" />
+              <img src={ISeven} alt="Logo ISeven" loading="lazy" decoding="async" className="h-15 w-auto" />
             </div>
 
             <div className="flex items-center justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3 shrink-0">
-              <img src={KoonSpace} alt="" className="h-16 w-auto" />
+              <img src={KoonSpace} alt="Logo Koon Space" loading="lazy" decoding="async" className="h-16 w-auto" />
             </div>
 
           </div>
@@ -531,23 +533,23 @@ const AcceuilPage = () => {
           <div className="flex items-center gap-6 lg:gap-10 pr-6 lg:pr-10">
 
             <div className="flex items-center justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3 shrink-0">
-              <img src={MidiMadagascar} alt="" className="h-15 w-auto" />
+              <img src={MidiMadagascar} alt="Logo Midi Madagascar" loading="lazy" decoding="async" className="h-15 w-auto" />
             </div>
 
             <div className="flex items-start justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white pt-5 shrink-0">
-              <img src={OrangeMadagascar} alt="" className="h-17 w-auto" />
+              <img src={OrangeMadagascar} alt="Logo Orange Madagascar" loading="lazy" decoding="async" className="h-17 w-auto" />
             </div>
 
             <div className="flex items-center justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3 shrink-0">
-              <img src={GroupeKentia} alt="" className="h-20 w-auto" />
+              <img src={GroupeKentia} alt="Logo Groupe Kentia" loading="lazy" decoding="async" className="h-20 w-auto" />
             </div>
 
             <div className="flex items-center justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3 shrink-0">
-              <img src={ISeven} alt="" className="h-15 w-auto" />
+              <img src={ISeven} alt="Logo ISeven" loading="lazy" decoding="async" className="h-15 w-auto" />
             </div>
 
             <div className="flex items-center justify-center rounded-xl w-[180px] sm:w-[200px] h-[80px] sm:h-[100px] overflow-hidden bg-jci-white py-3 shrink-0">
-              <img src={KoonSpace} alt="" className="h-16 w-auto" />
+              <img src={KoonSpace} alt="Logo Koon Space" loading="lazy" decoding="async" className="h-16 w-auto" />
             </div>
 
           </div>
@@ -561,7 +563,7 @@ const AcceuilPage = () => {
         <div className='flex flex-col items-start justify-between py-7 px-6 lg:pl-7 lg:pr-0 gap-4 lg:gap-1 text-left lg:text-center bg-jci-white h-auto lg:h-[570px] w-full lg:w-[1600px] lg:-mr-200'>
           <div className="flex flex-col items-start">
             <div className='flex flex-row items-center -mb-1'>
-              <p className='text-jci-blue text-[8px] font-bold font-noto'>ACTUALITÉS & ÉVÉNEMENTS</p>
+              <p className='text-jci-blue text-[8px] font-bold font-poppins'>ACTUALITÉS & ÉVÉNEMENTS</p>
               <div className='ml-2 h-[0.5px] w-10  bg-jci-yellow'> </div>
             </div>
             <H1 TextSize="text-2xl">RESTEZ CONNECTÉ</H1>
@@ -573,10 +575,10 @@ const AcceuilPage = () => {
         </div>
         <div className='relative lg:absolute lg:top-27 lg:left-70 flex flex-col lg:flex-row w-full lg:w-auto px-6 lg:px-0 md:bg-transparent bg-jci-white -mt-2 md:mt-0 pb-10 md:pb-0'>
           <div name="text" className='hidden lg:block relative h-[400px] w-[60px] -ml-10 mr-5'>
-            <p className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[90px] font-bold text-jci-black/10 font-noto select-none'>
+            <p className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[90px] font-bold text-jci-black/10 font-poppins select-none'>
               Actualités
             </p>
-            <p className='absolute top-1/2 left-15 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[20px] font-bold text-jci-white font-noto'>
+            <p className='absolute top-1/2 left-15 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[20px] font-bold text-jci-white font-poppins'>
               Actualités & événements
             </p>
           </div>

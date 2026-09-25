@@ -1,18 +1,10 @@
 import SubNav from "../../components/layout/SubNav"
 import H1 from "../../components/ui/H1"
-import Programme1 from "../../images/Programme1.png"
-import Programme2 from "../../images/Programme2.png"
-import Programme3 from "../../images/Programme3.png"
-import Programme4 from "../../images/Programme4.png"
-import Programme5 from "../../images/Programme5.png"
-
-
-const programmes = [
-  { Title: "La JMA (JCI Malagasy Academy)", Content: "10 jours d'immersion internationale, de partage, d'apprentissage aux côtés des plus grands leaders JCI du monde entier." },
-  { Title: "Art Oratoire & Débat", Content: "Un programme qui renforce la prise de parole en public et l'art du débat argumenté." },
-  { Title: "TOYP (Ten Outstanding Young Persons)", Content: "Le programme met en lumière de jeunes leaders âgés de 18 à 40 ans dont les réalisations exceptionnelles inspirent leur communauté." },
-  { Title: "CYE (Creative Young Entrepreneur)", Content: "Le programme CYE de la JCI met en lumière les jeunes entrepreneurs innovants, ambitieux et à fort impact." },
-]
+import Programme1 from "../../images/Programme1.webp"
+import Programme2 from "../../images/Programme2.webp"
+import Programme3 from "../../images/Programme3.webp"
+import Programme4 from "../../images/Programme4.webp"
+import Programme5 from "../../images/Programme5.webp"
 
 const ProgrammesPage = () => {
   return (

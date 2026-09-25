@@ -471,8 +471,9 @@ const PastPresidentManager = () => {
                 <td className='px-4 py-3 text-left text-jci-black font-medium'>
 
                   <div className='w-15 h-15 rounded-full overflow-hidden'>
-
+                
                     <img
+                      loading="lazy"
                       src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${item.imgUrl}`}
                       alt={item.name}
                       className='w-full h-full object-contain'

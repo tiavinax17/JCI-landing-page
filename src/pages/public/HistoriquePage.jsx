@@ -1,7 +1,7 @@
 import SubNav from "../../components/layout/SubNav"
 import StatBlock from "../../components/ui/StatBlock"
-import HistoriqueImg1 from "../../images/Historique1.png"
-import HistoriqueImg2 from "../../images/Historique2.png"
+import HistoriqueImg1 from "../../images/Historique1.webp"
+import HistoriqueImg2 from "../../images/Historique2.webp"
 import Timeline from "../../images/timeline.svg"
 import LabelTraitSimple from './../../components/ui/LabelTraitSimple';
 import { useEffect, useState } from "react"

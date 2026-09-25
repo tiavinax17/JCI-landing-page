@@ -4,7 +4,7 @@ import H2 from "../../components/ui/H2"
 import LabelTrait from "../../components/ui/LabelTrait"
 import LabelTraitSimple from "../../components/ui/LabelTraitSimple"
 import ValueCredoBlock from "../../components/ui/ValueCredoBlock"
-import SenatImage from "../../images/Senat.png"
+import SenatImage from "../../images/Senat.webp"
 
 const SenatPage = () => {
   return (

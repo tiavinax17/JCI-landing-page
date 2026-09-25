@@ -347,7 +347,7 @@ const EventsDetailsManager = () => {
         </div>   
         <div className="flex flex-col gap-5">
 
-        <div className="flex items-center md:flex-row flex-col gap-5 justify-between">
+        <div className="flex items-center md:items-start flex-col gap-5 justify-between">
 
             <div>
             <h1 className="text-jci-black font-bold font-poppins text-[20px]">
@@ -464,7 +464,7 @@ const EventsDetailsManager = () => {
         </div>
         <div className="mt-8">
 
-            <div className="flex items-center flex-col md:flex-row justify-between mb-4 gap-5">
+            <div className="flex items-center flex-col md:items-start justify-between mb-4 gap-5">
                 <div>
                     <h1 className="text-jci-black font-bold font-poppins text-[20px]">
                         Images de l'événement
@@ -519,6 +519,7 @@ const EventsDetailsManager = () => {
                     className="relative group rounded overflow-hidden border border-black/10"
                     >
                     <img
+                        loading="lazy"
                         src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${image.imgUrl}`}
                         alt="Image événement"
                         className="w-full h-40 object-cover"
@@ -761,8 +762,8 @@ const EventsDetailsManager = () => {
                       message: "La citation doit contenir au moins 5 caractères",
                     },
                     maxLength: {
-                      value: 500,
-                      message: "La citation ne doit pas dépasser 500 caractères",
+                      value: 1000,
+                      message: "La citation ne doit pas dépasser 1000 caractères",
                     },
                   })}
                 className="px-4 py-3 border border-gray-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-jci-yellow focus:border-jci-yellow"

@@ -409,6 +409,7 @@ const ZonesManager = () => {
           {/* Photo de couverture */}
         <div className='relative w-full h-[20vh] overflow-hidden '>
             <img
+              loading="lazy"
               src={`${import.meta.env.VITE_BACKEND_APP_API_URL_IMAGE}${item.imgUrl}`}
               alt={item.name}
               className='w-full h-full object-cover'

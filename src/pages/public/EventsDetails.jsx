@@ -204,10 +204,10 @@ const EventsDetails = () => {
         </div>
         <div className='relative lg:absolute lg:top-35 lg:left-60 flex flex-col lg:flex-row w-full lg:w-auto lg:px-0  '>
           <div name="text" className='hidden lg:block relative h-[400px] w-[60px] -ml-10 mr-5'>
-            <p className='absolute top-130 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[90px] font-bold text-jci-black/10 font-noto select-none'>
+            <p className='absolute top-130 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[90px] font-bold text-jci-black/10 font-poppins select-none'>
               Actualités & événements
             </p>
-            <p className='absolute top-1/2 left-15 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[25px] font-bold text-jci-white font-noto'>
+            <p className='absolute top-1/2 left-15 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[25px] font-bold text-jci-white font-poppins'>
               Actualités & événements
             </p>
           </div>
